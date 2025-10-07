@@ -15,11 +15,20 @@
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1600px;margin:0 auto;padding:16px 14px 60px}
-  .topbar{display:flex;align-items:center;gap:12px;justify-content:space-between;margin-bottom:8px}
-  .brand{font-weight:800;letter-spacing:.3px;font-size:18px;white-space:nowrap}
-  .actions{display:flex;align-items:center;gap:10px;position:relative}
 
+  .wrap{max-width:1600px;margin:0 auto;padding:16px 14px 60px}
+
+  /* TOP BAR */
+  .topbar{display:flex;align-items:center;gap:14px;justify-content:space-between;margin-bottom:10px}
+  .brandline{display:flex;align-items:center;gap:14px;min-width:0}
+  .brand a{display:inline-flex;align-items:center;font-weight:900;letter-spacing:.2px;font-size:19px;white-space:nowrap}
+  .brand a:hover{filter:saturate(1.1)}
+  .nav{display:flex;gap:8px;flex-wrap:wrap}
+  .nav a{display:inline-flex;align-items:center;padding:8px 10px;border-radius:10px;font-size:13px;color:#d9e6f2;
+         border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03)}
+  .nav a:hover{background:rgba(255,255,255,.07)}
+
+  .actions{display:flex;align-items:center;gap:10px;position:relative}
   .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;cursor:pointer;font-size:13px;
     background:linear-gradient(180deg, var(--accent), color-mix(in oklab, var(--accent) 85%, #000 15%));
     color:#06121a; border:1px solid color-mix(in oklab, var(--accent) 70%, #fff 30%);
@@ -33,8 +42,8 @@
   .btn.red:hover{ box-shadow:0 10px 26px rgba(255,77,109,.35), 0 3px 8px rgba(255,77,109,.45); transform: translateY(-1px) scale(1.01); filter: saturate(1.05) }
   @keyframes pulseGlow{ 0%,100%{box-shadow:0 0 0 rgba(255,77,109,0)} 50%{box-shadow:0 0 24px rgba(255,77,109,.35)} }
 
-  .top-ad{ width:100%; display:flex; justify-content:center; align-items:center; margin:10px 0 16px }
-  .ad-970x250{ width:970px; height:250px; border-radius:12px; background:linear-gradient(135deg,#243447,#1f2937); border:1px dashed rgba(255,255,255,.18); color:#cbd5e1; display:flex; align-items:center; justify-content:center; font-weight:700; letter-spacing:.5px }
+  .top-ad{ width:100%; display:flex; justify-content:center; align-items:center; margin:6px 0 16px }
+  .ad-970x250{ width:970px; height:250px; border-radius:12px; background:#0f1622; border:1px dashed rgba(255,255,255,.18); color:#cbd5e1; display:flex; align-items:center; justify-content:center; font-weight:700; letter-spacing:.5px }
   @media (max-width: 1100px){ .ad-970x250{ width:728px; height:90px } }
   @media (max-width: 780px){ .ad-970x250{ width:468px; height:60px } }
   @media (max-width: 520px){ .ad-970x250{ width:320px; height:50px } }
@@ -69,17 +78,21 @@
   .pill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:6px 12px;background:var(--panel)}
   .pill input[type="radio"]{accent-color:var(--accent)}
 
-  /* Settings: info menu */
+  /* Info menu (inside settings) */
   .menu{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px; margin-top:6px }
   .menu a{ display:flex; align-items:center; gap:10px; border:1px solid rgba(255,255,255,.1); border-radius:10px; padding:10px 12px; background:rgba(255,255,255,.03) }
   .menu a:hover{ background:rgba(255,255,255,.06) }
-  .menu svg{ width:16px; height:16px; opacity:.9 }
 
+  /* Modal */
   .modal{position:fixed;inset:0;display:none;background:rgba(4,10,18,.66);backdrop-filter:saturate(120%) blur(8px);z-index:40}
   .modal.open{display:flex}
   .sheet{margin:auto;max-width:min(1200px,96vw);width:100%;height:min(82vh,820px);background:var(--panel);border:1px solid rgba(255,255,255,.08);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.5)}
-  .pbar{display:flex;align-items:center;justify-content:space-between;padding:9px;border-bottom:1px solid rgba(255,255,255,.08)}
-  .pbtn{border:1px solid rgba(255,255,255,.12);padding:8px 12px;border-radius:10px;cursor:pointer;font-size:13px;background:linear-gradient(180deg, var(--accent), color-mix(in oklab, var(--accent) 85%, #000 15%));color:#06121a;transition:box-shadow .18s ease, transform .12s ease, background .18s ease, border-color .18s ease}
+  .pbar{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .pbar .title{font-weight:800}
+  .pbtn{border:1px solid rgba(255,255,255,.12);padding:10px 14px;border-radius:10px;cursor:pointer;font-size:14px;font-weight:700;
+        background:linear-gradient(180deg, var(--accent), color-mix(in oklab, var(--accent) 85%, #000 15%));color:#06121a;
+        transition:box-shadow .18s ease, transform .12s ease, background .18s ease, border-color .18s ease}
+  .pbtn + .pbtn{ margin-left:8px }
   .pbtn:hover{background:linear-gradient(180deg, var(--accent2), color-mix(in oklab, var(--accent2) 80%, #000 20%)); border-color:color-mix(in oklab, var(--accent2) 70%, #fff 30%); box-shadow:0 6px 24px rgba(46,168,255,.28), 0 2px 6px rgba(46,168,255,.36); transform:translateY(-1px)}
   .frame{position:relative; flex:1; background:#0b1118}
   .frame iframe{position:absolute; inset:0; width:100%; height:100%; border:0; background:#000; z-index:1}
@@ -88,85 +101,28 @@
   .preplay .title{align-self:flex-start; font-weight:800; font-size:18px; margin-bottom:8px}
   .preplay .thumb{ width:112px; height:112px; border-radius:18px; overflow:hidden; box-shadow:0 10px 26px rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.08) }
   .preplay .thumb img{width:100%;height:100%;object-fit:cover}
-  .preplay .ad-300{ width:300px; height:250px; border-radius:12px; background:linear-gradient(135deg,#243447,#1f2937); border:1px dashed rgba(255,255,255,.2); color:#cbd5e1; display:flex; align-items:center; justify-content:center; font-weight:700 }
+  .preplay .ad-300{ width:300px; height:250px; border-radius:12px; background:#0f1622; border:1px dashed rgba(255,255,255,.2); color:#cbd5e1; display:flex; align-items:center; justify-content:center; font-weight:700 }
   .preplay .play-btn{ margin-top:6px; display:inline-flex; align-items:center; gap:10px; padding:12px 20px; border-radius:999px; cursor:pointer; background:linear-gradient(180deg,#fb7185,#f472b6); color:#1b0b14; font-weight:800; border:1px solid rgba(255,255,255,.25); box-shadow:0 10px 24px rgba(255,115,150,.25) }
   .preplay .row{display:flex; gap:14px; align-items:center; margin-top:6px}
   .preplay .hint{font-size:12px; color:var(--muted)}
+
   footer{margin-top:28px; padding-top:18px; border-top:1px solid rgba(255,255,255,.08); display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:center; color:var(--muted); font-size:13px}
   footer a{padding:6px 10px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03)}
   footer a:hover{background:rgba(255,255,255,.06)}
 </style>
 </head>
 <body>
-<div id="preroll"></div>
-<script>
-	function getScript(src) {
-    var headElm = document.head || document.getElementsByTagName('head')[0];
-    var script = document.createElement("script");
-    var once = true;
-    script.async = "async";
-    script.type = "text/javascript";
-    script.charset = "UTF-8";
-    script.src = src;
-    script.onload = script.onreadystatechange = function() {
-        if (once && (!script.readyState || /loaded|complete/.test(script.readyState))) {
-            once = false;         
-            script.onload = script.onreadystatechange = null;
-			console.log("okeey");
-        }
-    };
-	  headElm.appendChild(script);
-}
-
- 
-	getScript("https://api.adinplay.com/libs/aiptag/pub/AGT/paperio.pro/tag.min.js");
- 
-	window.aiptag = window.aiptag || {cmd: []};
-	aiptag.cmd.display = aiptag.cmd.display || [];
-	aiptag.cmd.player = aiptag.cmd.player || [];
-
-	//CMP tool settings
-	aiptag.cmp = {
-		show: true,
-		position: "centered",  //centered, bottom
-		button: true,
-		buttonText: "Privacy settings",
-		buttonPosition: "bottom-left" //bottom-left, bottom-right, top-left, top-right
-	}
-
-	aiptag.cmd.player.push(function() {
-		aiptag.adplayer = new aipPlayer({
-			AD_WIDTH: 960,
-			AD_HEIGHT: 540,
-			AD_DISPLAY: 'center', //default, fullscreen, center, fill
-			LOADING_TEXT: 'loading advertisement',
-			PREROLL_ELEM: function(){return document.getElementById('preroll')},
-			AIP_COMPLETE: function (evt){
-				
-   //skip_play();
- 			},
-			AIP_REMOVE: function ()  {
-				// Here it's safe to remove the PREROLL_ELEM from the page if you want. But it's not recommend.
-			}
-		});
-	});
-	
-	 
- 
-				function show_preroll() {
- 					if (typeof aiptag.adplayer !== 'undefined') {
-				 	aiptag.cmd.player.push(function() { aiptag.adplayer.startPreRoll(); });
-					} else {
-				    	
-   //skip_play();
- 
-					}
-				}
-	
-</script>
   <div class="wrap">
     <div class="topbar">
-      <div class="brand">geography-30 • Unblocked</div>
+      <div class="brandline">
+        <div class="brand"><a href="index.html" title="Home">geography-30 • Unblocked</a></div>
+        <nav class="nav">
+          <a href="about.html">About</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="terms.html">Terms</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
       <div class="actions">
         <button class="btn red" id="btnSettings" aria-haspopup="true" aria-expanded="false">⚙ Settings</button>
         <div class="panel" id="settingsPanel" role="dialog" aria-label="Settings">
@@ -187,24 +143,22 @@
           </div>
           <h4>Info</h4>
           <nav class="menu">
-            <a href="about.html"   title="About this site"><svg viewBox="0 0 24 24" fill="none"><path d="M12 20c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8Z" stroke="currentColor"/></svg> About</a>
-            <a href="privacy.html" title="Privacy policy"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 4v5c0 5-3 8-7 9-4-1-7-4-7-9V7l7-4Z" stroke="currentColor"/></svg> Privacy</a>
-            <a href="terms.html"   title="Terms of service"><svg viewBox="0 0 24 24" fill="none"><path d="M6 4h9l3 3v13H6V4Z" stroke="currentColor"/></svg> Terms</a>
-            <a href="contact.html" title="Contact us"><svg viewBox="0 0 24 24" fill="none"><path d="M3 5h18v10H6l-3 4V5Z" stroke="currentColor"/></svg> Contact</a>
+            <a href="about.html">About</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
+            <a href="contact.html">Contact</a>
           </nav>
           <div style="font-size:12px;color:var(--muted);margin-top:6px">Selecting an app changes only the <strong>favicon</strong> of this site.</div>
         </div>
       </div>
     </div>
 
-    <div class="top-ad"><div class="ad-970x250">
- <div id='paperio-pro_970x250'>
-			<script type='text/javascript'>
-			aiptag.cmd.display.push(function() { aipDisplayTag.display('paperio-pro_970x250'); });
-			</script>
-         </div>		
-	
-	</div></div>
+    <div class="top-ad">
+      <div class="ad-970x250">
+        <!-- AdinPlay 970x250 container -->
+        <div id="fine-arts-lol_970x250" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center">970×250</div>
+      </div>
+    </div>
 
     <div class="toolbar">
       <input id="q" class="input" type="search" placeholder="Search…" />
@@ -225,12 +179,10 @@
   <div class="modal" id="playerModal" aria-modal="true" role="dialog" aria-label="Game player">
     <div class="sheet">
       <div class="pbar">
-        <div class="left">
-          <button class="pbtn" id="btnBack">← Close</button>
-          <strong id="gameTitle"></strong>
-        </div>
+        <div class="title" id="gameTitle"></div>
         <div class="right">
           <button class="pbtn" id="btnFullscreen">Fullscreen</button>
+          <button class="pbtn" id="btnBack">Close</button>
         </div>
       </div>
       <div class="frame">
@@ -238,13 +190,9 @@
           <div class="title" id="ppTitle">Game</div>
           <div class="thumb"><img id="ppThumb" alt=""></div>
           <div class="ad-300" id="ppAd">
-		  
-		   <div id='paperio-pro_300x250'>
-			<script type='text/javascript'>
-			aiptag.cmd.display.push(function() { aipDisplayTag.display('paperio-pro_300x250'); });
-			</script>
-         </div>	
-		  </div>
+            <!-- AdinPlay 300x250 container -->
+            <div id="fine-arts-lol_300x250" style="width:300px;height:250px;display:flex;align-items:center;justify-content:center">300×250</div>
+          </div>
           <div class="row"><button class="play-btn" id="ppPlay">▶ PLAY</button></div>
           <div class="hint">Press <b>ESC</b> to close</div>
         </div>
@@ -253,8 +201,9 @@
     </div>
   </div>
 
+<script src="ads.js"></script>
 <script>
-const LSKEY = 'g30_favicon_switcher_v4_6';
+const LSKEY = 'g30_favicon_switcher_v4_8';
 const FAV = {
   default: { ico: '/favicon.ico', apple: '/apple-touch-icon.png' },
   classroom: { ico: 'https://classroom.google.com/favicon.ico', apple: 'https://ssl.gstatic.com/classroom/apple-touch-icon.png' },
@@ -294,12 +243,12 @@ function setFavicon(app){
   favIco.href = map.ico; favApple.href = map.apple || map.ico;
   document.querySelectorAll('.tile').forEach(t => t.classList.toggle('active', t.dataset.app === app));
 }
-iconGrid.addEventListener('click', (e)=>{
+iconGrid?.addEventListener('click', (e)=>{
   const tile = e.target.closest('.tile'); if(!tile) return;
   const app = tile.dataset.app;
   const s = loadS(); s.app = app; saveS(s); setFavicon(app);
 });
-btnSettings.addEventListener('click', ()=>{
+btnSettings?.addEventListener('click', ()=>{
   const open = !settingsPanel.classList.contains('open');
   settingsPanel.classList.toggle('open', open);
   btnSettings.setAttribute('aria-expanded', open ? 'true' : 'false');
@@ -347,7 +296,7 @@ function startGame(g){
   player.src = g.game_url || 'about:blank';
 }
 
-/* Pre-roll hook (unchanged) */
+/* Pre-roll hook */
 async function runPrerollThenStart(g){
   try{
     if (typeof window.show_preroll === 'function'){
@@ -365,18 +314,22 @@ document.addEventListener('click', (e)=>{
   openModalWithPreplay(g);
   ppPlay.onclick = ()=> runPrerollThenStart(g);
 });
-document.getElementById('btnBack').addEventListener('click', ()=>{ modal.classList.remove('open'); player.src='about:blank'; preplay.style.display='none'; });
+
+/* Buttons on the RIGHT */
 document.getElementById('btnFullscreen').addEventListener('click', async ()=>{
   const container = player.parentElement;
   if (document.fullscreenElement) await document.exitFullscreen().catch(()=>{});
   else await container.requestFullscreen?.().catch(()=>{});
 });
-document.addEventListener('keydown', (e)=>{
-  if(e.key === 'Escape' && modal.classList.contains('open')){
-    modal.classList.remove('open'); player.src='about:blank'; preplay.style.display='none';
-  }
-});
-modal.addEventListener('click', (e)=>{ if(e.target === modal) { modal.classList.remove('open'); player.src='about:blank'; preplay.style.display='none'; }});
+function closePlayer(){
+  modal.classList.remove('open');
+  player.src='about:blank';
+  preplay.style.display='none';
+  try{ if (typeof window.reloadAds === 'function') window.reloadAds(); }catch(e){ console.warn('reloadAds error', e); }
+}
+document.getElementById('btnBack').addEventListener('click', closePlayer);
+document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && modal.classList.contains('open')) closePlayer(); });
+modal.addEventListener('click', (e)=>{ if(e.target === modal) closePlayer(); });
 
 setInterval(()=>{
   if (modal.classList.contains('open') && (!player.src || player.src==='about:blank') && preplay.style.display==='none'){
