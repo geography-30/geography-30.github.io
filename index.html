@@ -6,7 +6,7 @@
 <title>geography-30 • Unblocked</title>
 <meta name="description" content="Unblocked games: 10-column grid with thumbnails, fullscreen player, and a rich settings panel. Fed by games.json." />
 <style>
-  /* ===== Modern Blue Theme ===== */
+  /* ===== Modern Blue Theme (tuned) ===== */
   :root{
     --bg:#090d13;
     --card:#0f1520;
@@ -63,7 +63,7 @@
   .card{
     border:1px solid var(--border);border-radius:12px;overflow:hidden;
     background:linear-gradient(180deg, #111827, #0c1220);
-    display:flex;flex-direction:column;min-height:138px;
+    display:flex;flex-direction:column;min-height:124px; /* ~-10% from 138px */
     transition:border-color .18s ease, transform .12s ease, box-shadow .18s ease;
   }
   .card:hover{
@@ -74,19 +74,21 @@
   [data-theme="light"] .card{background:linear-gradient(180deg,#ffffff,#f4f7fb)}
 
   .thumb{
-    width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
+    width:100%;
+    aspect-ratio: calc(4/3 * 1.11); /* ~10% height reduction at same width */
+    display:flex;align-items:center;justify-content:center;
     background:radial-gradient(120% 100% at 30% 20%,#1a2740 0%,#0c1220 60%);
   }
   [data-theme="light"] .thumb{background:radial-gradient(120% 100% at 30% 20%,#cfd9f5 0%,#eef3ff 60%)}
   .thumb img{width:100%;height:100%;object-fit:cover}
 
-  .meta{padding:8px 10px}
-  .title{font-size:12px;font-weight:800;line-height:1.2;height:30px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-  .badge{display:inline-block;margin-top:6px;font-size:10px;padding:4px 8px;border-radius:999px;background:rgba(46,168,255,.16); color:var(--accent); border:1px solid rgba(46,168,255,.25)}
+  .meta{padding:7px 9px}
+  .title{font-size:11.5px;font-weight:800;line-height:1.2;height:27px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .badge{display:none} /* hide category under each game on homepage */
 
   /* Search & category */
   .toolbar{display:flex;gap:10px;align-items:center;margin:10px 0 14px;flex-wrap:wrap}
-  .input,.select{border:1px solid var(--border); background:var(--card); color:var(--text); padding:9px 12px; border-radius:10px; font-size:13px}
+  .input,.select{border:1px solid var(--border); background:var(--card); color:var(--text); padding:8px 11px; border-radius:10px; font-size:13px}
   .select{ background:linear-gradient(180deg,var(--card),color-mix(in oklab,var(--card) 92%, #000 8%))}
   .counter{margin-left:auto}
 
@@ -102,15 +104,16 @@
   .row{display:flex;align-items:center;justify-content:space-between;padding:6px 2px;gap:12px}
   .sub{font-size:12px;color:var(--muted);margin-top:4px}
 
-  /* Player modal */
+  /* Player modal (~10% smaller) */
   .modal{position:fixed;inset:0;display:none;background:rgba(4,10,18,.66);backdrop-filter:saturate(120%) blur(8px);z-index:40}
   .modal.open{display:flex}
   .sheet{
-    margin:auto;max-width:min(1400px,96vw);width:100%;height:min(86vh,900px);
+    margin:auto;max-width:min(1260px,96vw); /* 1400 -> 1260 (~-10%) */
+    width:100%;height:min(77vh,810px);      /* 86vh -> 77vh (~-10%) */
     background:var(--card); border:1px solid var(--border); border-radius:16px;
     display:flex;flex-direction:column;overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,.5)
   }
-  .pbar{display:flex;align-items:center;justify-content:space-between;padding:10px;border-bottom:1px solid var(--border)}
+  .pbar{display:flex;align-items:center;justify-content:space-between;padding:9px;border-bottom:1px solid var(--border)}
   .pbar .left{display:flex;align-items:center;gap:10px}
   .pbtn{
     border:1px solid var(--border); padding:8px 12px; border-radius:10px; cursor:pointer; font-size:13px;
@@ -200,7 +203,7 @@
 
 <script>
 /* ===== Settings/State ===== */
-const LSKEY = 'g30_settings_hybrid';
+const LSKEY = 'g30_settings_hybrid_small';
 const grid = document.getElementById('grid');
 const modal = document.getElementById('playerModal');
 const player = document.getElementById('player');
@@ -314,7 +317,7 @@ function openPlayer(g){
   modal.classList.add('open');
 
   const s = loadSettings();
-  if (s.fsBefore) { // request fullscreen right after opening
+  if (s.fsBefore) {
     setTimeout(()=>{ goFullscreen(); }, 120);
   }
 }
