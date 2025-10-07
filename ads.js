@@ -7,7 +7,8 @@ window.reloadAds = function reloadAds(){
     console.log('[AdinPlay] refresh banners');
     if (window.aiptag && window.aiptag.cmd && window.aiptag.cmd.display) {
       window.aiptag.cmd.display.push(function() {
-        try { aipDisplayTag.display('paperio-pro_970x250'); } catch(e){ console.warn('display error', e); }
+        try { aipDisplayTag.display('paperio-pro_970x250');
+        try { aipDisplayTag.display('paperio-pro_300x250'); } catch(e){} } catch(e){ console.warn('display error', e); }
       });
     }
   } catch (err) {
@@ -49,7 +50,8 @@ window.show_preroll = function show_preroll(){
   try{
     if (window.aiptag && window.aiptag.cmd && window.aiptag.cmd.display){
       window.aiptag.cmd.display.push(function() {
-        try { aipDisplayTag.display('paperio-pro_970x250'); } catch(e){}
+        try { aipDisplayTag.display('paperio-pro_970x250');
+        try { aipDisplayTag.display('paperio-pro_300x250'); } catch(e){} } catch(e){}
       });
     }
   }catch(e){}
