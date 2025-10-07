@@ -4,28 +4,20 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>geography-30 • Unblocked</title>
-<meta name="description" content="Unblocked games: 10-column grid with thumbnails, fullscreen player, and a rich settings panel. Fed by games.json." />
+<meta name="description" content="Unblocked games: 10-column grid with thumbnails, fullscreen player, and Settings inspired by quiz-66." />
 <style>
-  /* ===== Modern Blue Theme (tuned) ===== */
+  /* ===== Modern Blue + AMOLED option ===== */
   :root{
-    --bg:#090d13;
-    --card:#0f1520;
-    --muted:#9fb1c3;
-    --text:#eef6ff;
-    --accent:#2ea8ff;
-    --accent-hover:#58c5ff;
-    --border:rgba(46,168,255,.28);
-    --btn-text:#06121a;
+    --bg:#090d13; --card:#0f1520; --muted:#9fb1c3; --text:#eef6ff;
+    --accent:#2ea8ff; --accent-hover:#58c5ff; --border:rgba(46,168,255,.28); --btn-text:#06121a;
   }
   [data-theme="light"]{
-    --bg:#f5f8fc;
-    --card:#ffffff;
-    --muted:#5a6a7a;
-    --text:#0b1420;
-    --accent:#2a7dff;
-    --accent-hover:#5699ff;
-    --border:rgba(42,125,255,.28);
-    --btn-text:#ffffff;
+    --bg:#f5f8fc; --card:#ffffff; --muted:#5a6a7a; --text:#0b1420;
+    --accent:#2a7dff; --accent-hover:#5699ff; --border:rgba(42,125,255,.28); --btn-text:#ffffff;
+  }
+  [data-theme="amoled"]{
+    --bg:#000000; --card:#02040a; --muted:#9fb1c3; --text:#e6f1ff;
+    --accent:#2ea8ff; --accent-hover:#58c5ff; --border:rgba(46,168,255,.30); --btn-text:#021018;
   }
 
   *{box-sizing:border-box}
@@ -58,118 +50,103 @@
   .muted{color:var(--muted);font-size:12px}
   .hero{color:var(--muted);font-size:13px;margin:6px 0 12px}
 
-  /* Grid: 10 fixed columns + small cards with images */
+  /* Grid: 10 fixed columns + image cards; category hidden */
   .grid{display:grid;gap:8px;grid-template-columns:repeat(10,1fr)}
-  .card{
-    border:1px solid var(--border);border-radius:12px;overflow:hidden;
-    background:linear-gradient(180deg, #111827, #0c1220);
-    display:flex;flex-direction:column;min-height:124px; /* ~-10% from 138px */
-    transition:border-color .18s ease, transform .12s ease, box-shadow .18s ease;
-  }
-  .card:hover{
-    border-color:color-mix(in oklab, var(--border) 40%, var(--accent) 60%);
-    transform:translateY(-2px);
-    box-shadow:0 8px 22px rgba(46,168,255,.14);
-  }
+  .card{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:linear-gradient(180deg, #111827, #0c1220);
+    display:flex;flex-direction:column;min-height:124px;transition:border-color .18s ease, transform .12s ease, box-shadow .18s ease}
+  .card:hover{border-color:color-mix(in oklab, var(--border) 40%, var(--accent) 60%);transform:translateY(-2px);box-shadow:0 8px 22px rgba(46,168,255,.14)}
   [data-theme="light"] .card{background:linear-gradient(180deg,#ffffff,#f4f7fb)}
-
-  .thumb{
-    width:100%;
-    aspect-ratio: calc(4/3 * 1.11); /* ~10% height reduction at same width */
-    display:flex;align-items:center;justify-content:center;
-    background:radial-gradient(120% 100% at 30% 20%,#1a2740 0%,#0c1220 60%);
-  }
+  .thumb{width:100%;aspect-ratio:calc(4/3 * 1.11);display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(120% 100% at 30% 20%,#1a2740 0%,#0c1220 60%)}
   [data-theme="light"] .thumb{background:radial-gradient(120% 100% at 30% 20%,#cfd9f5 0%,#eef3ff 60%)}
   .thumb img{width:100%;height:100%;object-fit:cover}
-
   .meta{padding:7px 9px}
   .title{font-size:11.5px;font-weight:800;line-height:1.2;height:27px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-  .badge{display:none} /* hide category under each game on homepage */
+  .badge{display:none}
 
-  /* Search & category */
+  /* Toolbar */
   .toolbar{display:flex;gap:10px;align-items:center;margin:10px 0 14px;flex-wrap:wrap}
-  .input,.select{border:1px solid var(--border); background:var(--card); color:var(--text); padding:8px 11px; border-radius:10px; font-size:13px}
-  .select{ background:linear-gradient(180deg,var(--card),color-mix(in oklab,var(--card) 92%, #000 8%))}
+  .input,.select{border:1px solid var(--border);background:var(--card);color:var(--text);padding:8px 11px;border-radius:10px;font-size:13px}
+  .select{background:linear-gradient(180deg,var(--card),color-mix(in oklab,var(--card) 92%, #000 8%))}
   .counter{margin-left:auto}
 
-  /* Settings panel (Hybrid) */
-  .panel{
-    position:absolute;top:48px;right:0;min-width:320px;background:var(--card);
-    border:1px solid var(--border); border-radius:14px;padding:12px;display:none;
-    box-shadow:0 16px 40px rgba(0,0,0,.35), 0 0 0 1px rgba(46,168,255,.12) inset;
-  }
+  /* Settings panel — quiz-66 style */
+  .panel{position:absolute;top:48px;right:0;min-width:360px;background:var(--card);
+    border:1px solid var(--border);border-radius:14px;padding:14px;display:none;
+    box-shadow:0 16px 40px rgba(0,0,0,.35), 0 0 0 1px rgba(46,168,255,.12) inset}
   .panel.open{display:block}
-  .panel h4{margin:6px 0 8px;font-size:13px;color:var(--muted)}
+  .panel h4{margin:4px 0 8px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .row{display:flex;align-items:center;justify-content:space-between;padding:6px 2px;gap:12px}
-  .sub{font-size:12px;color:var(--muted);margin-top:4px}
+  .sub{font-size:12px;color:var(--muted);margin-top:6px}
+
+  /* Quick app icon buttons */
+  .appgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin:6px 0 10px}
+  .app{display:flex;flex-direction:column;align-items:center;gap:6px;border:1px dashed var(--border);border-radius:10px;padding:10px;background:rgba(46,168,255,.06);cursor:pointer}
+  .app.active{border-style:solid;background:rgba(46,168,255,.12)}
+  .app span{font-size:11px;color:var(--muted)}
+  .app svg{width:20px;height:20px;fill:currentColor;color:var(--accent)}
 
   /* Player modal (~10% smaller) */
   .modal{position:fixed;inset:0;display:none;background:rgba(4,10,18,.66);backdrop-filter:saturate(120%) blur(8px);z-index:40}
   .modal.open{display:flex}
-  .sheet{
-    margin:auto;max-width:min(1260px,96vw); /* 1400 -> 1260 (~-10%) */
-    width:100%;height:min(77vh,810px);      /* 86vh -> 77vh (~-10%) */
-    background:var(--card); border:1px solid var(--border); border-radius:16px;
-    display:flex;flex-direction:column;overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,.5)
-  }
+  .sheet{margin:auto;max-width:min(1260px,96vw);width:100%;height:min(77vh,810px);
+    background:var(--card);border:1px solid var(--border);border-radius:16px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.5)}
   .pbar{display:flex;align-items:center;justify-content:space-between;padding:9px;border-bottom:1px solid var(--border)}
   .pbar .left{display:flex;align-items:center;gap:10px}
-  .pbtn{
-    border:1px solid var(--border); padding:8px 12px; border-radius:10px; cursor:pointer; font-size:13px;
-    background:linear-gradient(180deg, var(--accent), color-mix(in oklab, var(--accent) 85%, #000 15%)); color:var(--btn-text);
-    box-shadow:0 0 0 rgba(46,168,255,0); transition:box-shadow .18s ease, transform .12s ease, background .18s ease, border-color .18s ease;
-  }
-  .pbtn:hover{
-    background:linear-gradient(180deg, var(--accent-hover), color-mix(in oklab, var(--accent-hover) 80%, #000 20%));
-    border-color:color-mix(in oklab, var(--accent-hover) 70%, #fff 30%);
-    box-shadow:0 6px 24px rgba(46,168,255,.28), 0 2px 6px rgba(46,168,255,.36);
-    transform:translateY(-1px);
-  }
+  .pbtn{border:1px solid var(--border);padding:8px 12px;border-radius:10px;cursor:pointer;font-size:13px;
+    background:linear-gradient(180deg, var(--accent), color-mix(in oklab, var(--accent) 85%, #000 15%));color:var(--btn-text);
+    box-shadow:0 0 0 rgba(46,168,255,0);transition:box-shadow .18s ease, transform .12s ease, background .18s ease, border-color .18s ease}
+  .pbtn:hover{background:linear-gradient(180deg, var(--accent-hover), color-mix(in oklab, var(--accent-hover) 80%, #000 20%));
+    border-color:color-mix(in oklab, var(--accent-hover) 70%, #fff 30%);box-shadow:0 6px 24px rgba(46,168,255,.28), 0 2px 6px rgba(46,168,255,.36);transform:translateY(-1px)}
 
-  /* Quick links */
-  .qlinks{display:none;gap:8px;flex-wrap:wrap}
-  .qlinks.show{display:flex}
+  /* Small helper styles */
+  .pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);border-radius:999px;padding:6px 10px;background:var(--card)}
+  .pill input[type="radio"]{accent-color:var(--accent)}
+  .inline-input{display:flex;gap:8px;align-items:center}
+  .inline-input input[type="url"], .inline-input input[type="text"]{flex:1; min-width:0; border:1px solid var(--border);background:var(--bg);color:var(--text);padding:8px 10px;border-radius:10px}
 </style>
 </head>
 <body>
   <div class="wrap">
     <div class="topbar">
-      <div class="brand">geography-30 • Unblocked <span class="muted">(Modern Blue • Hybrid Settings)</span></div>
+      <div class="brand">geography-30 • Unblocked <span class="muted">(Modern Blue • quiz-66 settings)</span></div>
       <div class="actions">
-        <div id="quickLinks" class="qlinks">
-          <a class="btn" href="https://www.google.com" target="_blank" rel="noopener">Google</a>
-          <a class="btn" href="https://drive.google.com" target="_blank" rel="noopener">Google Drive</a>
-          <a class="btn" id="btnClassroom" href="https://classroom.google.com" target="_blank" rel="noopener">Google Classroom</a>
+        <div id="quickLinks" class="qlinks" style="display:none;gap:8px;flex-wrap:wrap">
+          <a class="btn" id="qlGoogle" href="https://www.google.com" target="_blank" rel="noopener">Google</a>
+          <a class="btn" id="qlDrive" href="https://drive.google.com" target="_blank" rel="noopener">Google Drive</a>
+          <a class="btn" id="qlClassroom" href="https://classroom.google.com" target="_blank" rel="noopener">Classroom</a>
+          <a class="btn" id="qlCanvas" href="https://canvas.instructure.com" target="_blank" rel="noopener">Canvas</a>
+          <a class="btn" id="qlPower" href="https://powerschool.com" target="_blank" rel="noopener">PowerSchool</a>
         </div>
         <button class="btn" id="btnSettings" aria-haspopup="true" aria-expanded="false">⚙ Settings</button>
         <div class="panel" id="settingsPanel" role="dialog" aria-label="Settings">
           <h4>Appearance</h4>
-          <div class="grid2">
-            <div class="row"><span>Theme</span>
-              <select id="themeSelect" class="select">
-                <option value="dark">Dark</option>
-                <option value="light">Light</option>
-              </select>
-            </div>
-            <div class="row"><span>Open in new tab</span>
-              <label><input id="newtabSwitch" type="checkbox" /> enabled</label>
-            </div>
+          <div class="appgrid" id="appGrid">
+            <!-- Six selectable quick-apps (toggle active) -->
+            <div class="app" data-app="default" title="Default"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg><span>Default</span></div>
+            <div class="app" data-app="classroom" title="Google Classroom"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/></svg><span>Classroom</span></div>
+            <div class="app" data-app="canvas" title="Canvas"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Z"/></svg><span>Canvas</span></div>
+            <div class="app" data-app="powerschool" title="PowerSchool"><svg viewBox="0 0 24 24"><path d="M6 3h12v18H6z"/></svg><span>PowerSchool</span></div>
+            <div class="app" data-app="google" title="Google"><svg viewBox="0 0 24 24"><path d="M21 12h-9v8"/></svg><span>Google</span></div>
+            <div class="app" data-app="drive" title="Google Drive"><svg viewBox="0 0 24 24"><path d="M7 3l5 0 5 8-5 0z"/></svg><span>Drive</span></div>
           </div>
 
-          <h4>Quick Links</h4>
-          <div class="grid2">
-            <div class="row"><span>Show Google</span><label><input id="glink" type="checkbox" /></label></div>
-            <div class="row"><span>Show Drive</span><label><input id="dlink" type="checkbox" /></label></div>
-            <div class="row"><span>Show Classroom</span><label><input id="clink" type="checkbox" /></label></div>
+          <h4>Themes</h4>
+          <div class="row">
+            <label class="pill"><input type="radio" name="theme" value="dark" checked> Dark</label>
+            <label class="pill"><input type="radio" name="theme" value="light"> Light</label>
+            <label class="pill"><input type="radio" name="theme" value="amoled"> Amoled</label>
           </div>
 
-          <h4>Player</h4>
-          <div class="grid2">
-            <div class="row"><span>Fullscreen before open</span><label><input id="fsBefore" type="checkbox" /></label></div>
-            <div class="row"><span>Autoplay ads</span><label><input id="adsAuto" type="checkbox" /></label></div>
+          <h4>Panic Button</h4>
+          <div class="row">
+            <div class="inline-input"><span>Key</span><input id="panicKey" type="text" placeholder="Press a key…" readonly class="input" style="width:160px"><button class="btn" id="btnSetKey">Set</button><button class="btn" id="btnClearKey">Clear</button></div>
           </div>
-          <div class="sub">“Autoplay ads” is a stub for future use. No ads will run unless you integrate a provider.</div>
+          <div class="row">
+            <div class="inline-input"><span>URL</span><input id="panicURL" type="url" placeholder="https://www.google.com"><button class="btn" id="btnSaveURL">Save</button></div>
+          </div>
+          <div class="sub">Press the panic key to instantly go to the URL (same tab). Keys are stored locally.</div>
         </div>
       </div>
     </div>
@@ -202,8 +179,8 @@
   </div>
 
 <script>
-/* ===== Settings/State ===== */
-const LSKEY = 'g30_settings_hybrid_small';
+/* ===== State ===== */
+const LSKEY = 'g30_settings_quiz66';
 const grid = document.getElementById('grid');
 const modal = document.getElementById('playerModal');
 const player = document.getElementById('player');
@@ -214,53 +191,124 @@ const btnFullscreen = document.getElementById('btnFullscreen');
 
 const settingsBtn = document.getElementById('btnSettings');
 const settingsPanel = document.getElementById('settingsPanel');
-const themeSelect = document.getElementById('themeSelect');
-const newtabSwitch = document.getElementById('newtabSwitch');
-
-const quickLinks = document.getElementById('quickLinks');
-const btnClassroom = document.getElementById('btnClassroom');
-const glink = document.getElementById('glink');
-const dlink = document.getElementById('dlink');
-const clink = document.getElementById('clink');
-
-const fsBefore = document.getElementById('fsBefore');
-const adsAuto = document.getElementById('adsAuto');
-
 const q = document.getElementById('q');
 const catSelect = document.getElementById('catSelect');
 const counter = document.getElementById('counter');
 
+/* Quick links buttons */
+const quickLinks = document.getElementById('quickLinks');
+const ql = {
+  google: document.getElementById('qlGoogle'),
+  drive: document.getElementById('qlDrive'),
+  classroom: document.getElementById('qlClassroom'),
+  canvas: document.getElementById('qlCanvas'),
+  power: document.getElementById('qlPower'),
+};
+
+/* Settings widgets (themes, apps, panic) */
+const appGrid = document.getElementById('appGrid');
+const themeRadios = [...document.querySelectorAll('input[name="theme"]')];
+const panicKeyInput = document.getElementById('panicKey');
+const panicURLInput = document.getElementById('panicURL');
+const btnSetKey = document.getElementById('btnSetKey');
+const btnClearKey = document.getElementById('btnClearKey');
+const btnSaveURL = document.getElementById('btnSaveURL');
+
+/* Persist */
 function loadSettings(){ try{ return JSON.parse(localStorage.getItem(LSKEY))||{} }catch{ return {} } }
 function saveSettings(s){ localStorage.setItem(LSKEY, JSON.stringify(s)); }
-function applySettings(s){
-  document.documentElement.setAttribute('data-theme', s.theme||'dark');
-  themeSelect.value = s.theme||'dark';
-  newtabSwitch.checked = !!s.newtab;
-  glink.checked = s.glink ?? true;
-  dlink.checked = s.dlink ?? true;
-  clink.checked = s.clink ?? false;
-  fsBefore.checked = !!s.fsBefore;
-  adsAuto.checked = !!s.adsAuto;
 
-  // Quick links visibility
-  quickLinks.style.display = (glink.checked || dlink.checked || clink.checked) ? 'flex' : 'none';
-  quickLinks.querySelector('a[href*="google.com"]').style.display = glink.checked ? '' : 'none';
-  quickLinks.querySelector('a[href*="drive.google.com"]').style.display = dlink.checked ? '' : 'none';
-  btnClassroom.style.display = clink.checked ? '' : 'none';
+function applySettings(s){
+  // Theme
+  const theme = s.theme || 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  themeRadios.forEach(r => r.checked = (r.value === theme));
+
+  // Quick app selection -> controls which quick links are shown
+  const active = s.apps || ['google','drive']; // default visible
+  quickLinks.style.display = active.length ? 'flex' : 'none';
+  Object.entries(ql).forEach(([k,el]) => { el.style.display = active.includes(k) ? '' : 'none'; });
+  // Update visual state on icons
+  document.querySelectorAll('.app').forEach(a => a.classList.toggle('active', active.includes(a.dataset.app)));
+
+  // Panic
+  panicKeyInput.value = s.panicKey || '';
+  panicURLInput.value = s.panicURL || 'https://www.google.com';
 }
+
 function currentSettings(){
+  const theme = themeRadios.find(r => r.checked)?.value || 'dark';
+  const apps = [...document.querySelectorAll('.app.active')].map(a => a.dataset.app).filter(x => x!=='default').map(x => {
+    // map to ql keys
+    if (x==='google') return 'google';
+    if (x==='drive') return 'drive';
+    if (x==='classroom') return 'classroom';
+    if (x==='canvas') return 'canvas';
+    if (x==='powerschool') return 'power';
+    return null;
+  }).filter(Boolean);
   return {
-    theme: themeSelect.value,
-    newtab: newtabSwitch.checked,
-    glink: glink.checked,
-    dlink: dlink.checked,
-    clink: clink.checked,
-    fsBefore: fsBefore.checked,
-    adsAuto: adsAuto.checked
+    theme,
+    apps,
+    panicKey: panicKeyInput.value || '',
+    panicURL: panicURLInput.value || 'https://www.google.com'
   };
 }
 
-/* ===== Data (games.json) ===== */
+/* App icon toggles */
+appGrid.addEventListener('click', (e)=>{
+  const tile = e.target.closest('.app');
+  if(!tile) return;
+  if (tile.dataset.app === 'default') {
+    // Default preset => Google + Drive visible
+    document.querySelectorAll('.app').forEach(a => a.classList.remove('active'));
+    document.querySelector('[data-app="google"]').classList.add('active');
+    document.querySelector('[data-app="drive"]').classList.add('active');
+  } else {
+    tile.classList.toggle('active');
+  }
+  saveSettings(currentSettings());
+  applySettings(loadSettings());
+});
+
+/* Themes */
+themeRadios.forEach(r => r.addEventListener('change', ()=>{ saveSettings(currentSettings()); applySettings(loadSettings()); }));
+
+/* Panic key capture */
+let capturing = false;
+btnSetKey.addEventListener('click', ()=>{
+  capturing = true;
+  panicKeyInput.value = 'Press any key…';
+  panicKeyInput.focus();
+});
+btnClearKey.addEventListener('click', ()=>{
+  panicKeyInput.value = '';
+  const s = loadSettings(); s.panicKey=''; saveSettings(s);
+});
+document.addEventListener('keydown', (e)=>{
+  if(!capturing) return;
+  e.preventDefault();
+  const key = e.key.length === 1 ? e.key.toUpperCase() : e.key; // display
+  panicKeyInput.value = key;
+  capturing = false;
+  const s = loadSettings(); s.panicKey = key; saveSettings(s);
+});
+btnSaveURL.addEventListener('click', ()=>{
+  const s = loadSettings(); s.panicURL = panicURLInput.value || 'https://www.google.com'; saveSettings(s);
+});
+
+/* Panic behavior */
+document.addEventListener('keydown', (e)=>{
+  const s = loadSettings();
+  if (!s.panicKey || capturing) return;
+  const wanted = s.panicKey;
+  const hit = (e.key.length===1 ? e.key.toUpperCase(): e.key) === wanted;
+  if (hit) {
+    window.location.href = s.panicURL || 'https://www.google.com';
+  }
+});
+
+/* Data */
 const FALLBACK = [];
 async function loadGames(){
   try{
@@ -274,9 +322,8 @@ async function loadGames(){
   }
 }
 
-/* ===== Render ===== */
+/* Render */
 let ALL = [], SHOWN = [];
-function catLabel(g){ return (g.categories && g.categories[0]) || 'game' }
 function cardHTML(g,i){
   const img = g.game_image_icon ? `<img loading="lazy" src="${g.game_image_icon}" alt="${(g.label||'Game').replace(/"/g,'&quot;')}">` : '';
   return `
@@ -284,19 +331,14 @@ function cardHTML(g,i){
     <div class="thumb">${img}</div>
     <div class="meta">
       <div class="title">${g.label||'Game'}</div>
-      <span class="badge">${catLabel(g)}</span>
+      <span class="badge" style="display:none"></span>
     </div>
   </a>`;
 }
-function renderGrid(list){
-  grid.innerHTML = list.map((g,i)=>cardHTML(g,i)).join('');
-  counter.textContent = list.length + ' games';
-}
+function renderGrid(list){ grid.innerHTML = list.map((g,i)=>cardHTML(g,i)).join(''); counter.textContent = list.length + ' games'; }
 function populateCats(){
-  const set = new Set();
-  ALL.forEach(g => (g.categories||[]).forEach(c => set.add(c)));
-  const opts = ['<option value="">All categories</option>'];
-  [...set].sort().forEach(c => opts.push(`<option value="${c}">${c}</option>`));
+  const set = new Set(); ALL.forEach(g => (g.categories||[]).forEach(c => set.add(c)));
+  const opts = ['<option value="">All categories</option>']; [...set].sort().forEach(c => opts.push(`<option value="${c}">${c}</option>`));
   catSelect.innerHTML = opts.join('');
 }
 function applyFilters(){
@@ -310,35 +352,27 @@ function applyFilters(){
   renderGrid(SHOWN);
 }
 
-/* ===== Player ===== */
+/* Player */
 function openPlayer(g){
   gameTitle.textContent = g.label || 'Game';
   player.src = g.game_url || 'about:blank';
   modal.classList.add('open');
-
-  const s = loadSettings();
-  if (s.fsBefore) {
-    setTimeout(()=>{ goFullscreen(); }, 120);
-  }
 }
-function closePlayer(){
-  modal.classList.remove('open');
-  player.src = 'about:blank';
-}
+function closePlayer(){ modal.classList.remove('open'); player.src = 'about:blank'; }
 async function goFullscreen(){
   const container = player.parentElement;
   if (document.fullscreenElement) await document.exitFullscreen().catch(()=>{});
   else await container.requestFullscreen?.().catch(()=>{});
 }
 
-/* ===== Events ===== */
+/* Events */
 document.addEventListener('click', (e)=>{
   const a = e.target.closest('a.card');
   if(a){
     e.preventDefault();
     const s = loadSettings();
     const g = SHOWN[+a.dataset.idx];
-    if(s.newtab) { window.open(g.game_url, '_blank'); return; }
+    if(s.apps && s.apps.includes('newtab')) { window.open(g.game_url, '_blank'); return; } // reserved if needed
     openPlayer(g);
   }
 });
@@ -352,25 +386,12 @@ settingsBtn.addEventListener('click', ()=>{
   settingsPanel.classList.toggle('open', open);
   settingsBtn.setAttribute('aria-expanded', open ? 'true':'false');
 });
-['change','input'].forEach(ev=>{
-  themeSelect.addEventListener(ev, ()=>{ applySettings(currentSettings()); saveSettings(currentSettings()); });
-  newtabSwitch.addEventListener(ev, ()=>{ saveSettings(currentSettings()); });
-  glink.addEventListener(ev, ()=>{ applySettings(currentSettings()); saveSettings(currentSettings()); });
-  dlink.addEventListener(ev, ()=>{ applySettings(currentSettings()); saveSettings(currentSettings()); });
-  clink.addEventListener(ev, ()=>{ applySettings(currentSettings()); saveSettings(currentSettings()); });
-  fsBefore.addEventListener(ev, ()=>{ saveSettings(currentSettings()); });
-  adsAuto.addEventListener(ev, ()=>{ saveSettings(currentSettings()); });
-  q.addEventListener(ev, applyFilters);
-});
-catSelect.addEventListener('change', applyFilters);
 
-/* ===== Init ===== */
+/* Init */
 (async function(){
   applySettings(loadSettings());
-  ALL = await loadGames();
-  SHOWN = ALL.slice(0);
-  populateCats();
-  renderGrid(SHOWN);
+  ALL = await loadGames(); SHOWN = ALL.slice(0);
+  populateCats(); renderGrid(SHOWN);
 })();
 </script>
 </body>
