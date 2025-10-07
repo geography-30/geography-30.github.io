@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<title>Privacy Policy • geography-30</title>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link id="fav-ico" rel="icon" href="/favicon.ico" sizes="any">
+<link id="fav-apple" rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#090d13" />
+<style>
+  :root{ --bg:#0a0f16; --panel:#0d141e; --tile:rgba(20,26,36,.78); --tile-hover:rgba(32,42,60,.86);
+         --muted:#9fb1c3; --text:#eef6ff; --accent:#2ea8ff; --accent2:#58c5ff; --border:rgba(46,168,255,.18);
+         --danger:#ff4d6d; --danger2:#ff7ea1; --danger3:#ff99b3; }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1600px;margin:0 auto;padding:16px 14px 60px}
+  .topbar{display:flex;align-items:center;gap:12px;justify-content:space-between;margin-bottom:8px}
+  .brand{font-weight:800;letter-spacing:.3px;font-size:18px;white-space:nowrap}
+  .actions{display:flex;align-items:center;gap:10px;position:relative}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;cursor:pointer;font-size:13px;
+    background:linear-gradient(180deg, var(--accent), color-mix(in oklab, var(--accent) 85%, #000 15%));
+    color:#06121a; border:1px solid color-mix(in oklab, var(--accent) 70%, #fff 30%);
+    box-shadow:0 0 0 rgba(46,168,255,0); transition:box-shadow .18s ease, transform .12s ease, background .18s ease, border-color .18s ease, filter .18s ease}
+  .btn:hover{ background:linear-gradient(180deg, var(--accent2), color-mix(in oklab, var(--accent2) 80%, #000 20%));
+    border-color:color-mix(in oklab, var(--accent2) 70%, #fff 30%); box-shadow:0 6px 24px rgba(46,168,255,.28), 0 2px 6px rgba(46,168,255,.36); transform:translateY(-1px) }
+  /* Animated red variant for Settings */
+  .btn.red{
+    background: radial-gradient(120% 180% at 10% -10%, var(--danger3) 0%, var(--danger2) 18%, var(--danger) 48%, #a6132e 100%);
+    color:#1b0b14; border:1px solid color-mix(in oklab, var(--danger) 70%, #fff 30%);
+    animation: pulseGlow 2.2s ease-in-out infinite;
+  }
+  .btn.red:hover{
+    box-shadow:0 10px 26px rgba(255,77,109,.35), 0 3px 8px rgba(255,77,109,.45);
+    transform: translateY(-1px) scale(1.01);
+    filter: saturate(1.05);
+  }
+  @keyframes pulseGlow{
+    0%, 100% { box-shadow:0 0 0 rgba(255,77,109,0) }
+    50% { box-shadow:0 0 24px rgba(255,77,109,.35) }
+  }
+  /* Footer */
+  footer{margin-top:28px; padding-top:18px; border-top:1px solid rgba(255,255,255,.08); display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:center; color:var(--muted); font-size:13px}
+  footer a{padding:6px 10px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03)}
+  footer a:hover{background:rgba(255,255,255,.06)}
+</style>
+
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand"><a href="index.html">← Back</a></div>
+      <div class="actions"><a class="btn" href="index.html">Home</a></div>
+    </div>
+    <main style="background:var(--panel); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:18px; line-height:1.6">
+      <h1 style="margin:6px 0 8px; font-size:22px">Privacy Policy</h1>
+      <div style="color:var(--muted); font-size:14px">We do not collect personal data. Third-party game hosts may set cookies. Ads, if present, are served by third parties and subject to their policies.</div>
+    </main>
+    <footer style="margin-top:20px; color:var(--muted); font-size:13px">© geography-30</footer>
+  </div>
+</body>
+</html>
