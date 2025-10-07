@@ -1,14 +1,13 @@
-/* ads.js — AdinPlay helpers */
+/* ads.js — AdinPlay helpers (single slot id: paperio-pro_970x250) */
 window.aiptag = window.aiptag || { cmd: { display: [], player: [] } };
 
-/* Refresh both banner slots */
+/* Refresh banners (both containers use the same id per request) */
 window.reloadAds = function reloadAds(){
   try {
     console.log('[AdinPlay] refresh banners');
     if (window.aiptag && window.aiptag.cmd && window.aiptag.cmd.display) {
       window.aiptag.cmd.display.push(function() {
-        try { aipDisplayTag.display('paperio-pro_970x250'); } catch(e){ console.warn('970x250 display error', e); }
-        try { aipDisplayTag.display('paperio-pro_300x250'); } catch(e){ console.warn('300x250 display error', e); }
+        try { aipDisplayTag.display('paperio-pro_970x250'); } catch(e){ console.warn('display error', e); }
       });
     }
   } catch (err) {
@@ -45,13 +44,12 @@ window.show_preroll = function show_preroll(){
   });
 };
 
-/* Auto display initial banners on load */
+/* Auto display initial banner on load */
 (function initDisplay(){
   try{
     if (window.aiptag && window.aiptag.cmd && window.aiptag.cmd.display){
       window.aiptag.cmd.display.push(function() {
         try { aipDisplayTag.display('paperio-pro_970x250'); } catch(e){}
-        try { aipDisplayTag.display('paperio-pro_300x250'); } catch(e){}
       });
     }
   }catch(e){}
