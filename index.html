@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geography 76 </title>
+    <link rel="icon" type="image/png" href="./Assests/Imgs/Logo.png">
+    <link rel="stylesheet" type="text/css" href="./Assests/CSS/main.css?vs1">
+    <link rel="stylesheet" type="text/css" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+<link rel="stylesheet" href="/modern-ui/modern.css">
+</head>
+<body class="default">
+<div id="preroll"></div>
+<script>
+	function getScript(src) {
+    var headElm = document.head || document.getElementsByTagName('head')[0];
+    var script = document.createElement("script");
+    var once = true;
+    script.async = "async";
+    script.type = "text/javascript";
+    script.charset = "UTF-8";
+    script.src = src;
+    script.onload = script.onreadystatechange = function() {
+        if (once && (!script.readyState || /loaded|complete/.test(script.readyState))) {
+            once = false;         
+            script.onload = script.onreadystatechange = null;
+			console.log("okeey");
+        }
+    };
+	  headElm.appendChild(script);
+}
+
+ 
+	getScript("https://api.adinplay.com/libs/aiptag/pub/MNS/agario.cafe/tag.min.js");
+ 
+	window.aiptag = window.aiptag || {cmd: []};
+	aiptag.cmd.display = aiptag.cmd.display || [];
+	aiptag.cmd.player = aiptag.cmd.player || [];
+
+	//CMP tool settings
+	aiptag.cmp = {
+		show: true,
+		position: "centered",  //centered, bottom
+		button: true,
+		buttonText: "Privacy settings",
+		buttonPosition: "bottom-left" //bottom-left, bottom-right, top-left, top-right
+	}
+
+	aiptag.cmd.player.push(function() {
+		aiptag.adplayer = new aipPlayer({
+			AD_WIDTH: 960,
+			AD_HEIGHT: 540,
+			AD_DISPLAY: 'center', //default, fullscreen, center, fill
+			LOADING_TEXT: 'loading advertisement',
+			PREROLL_ELEM: function(){return document.getElementById('preroll')},
+			AIP_COMPLETE: function (evt){
+				
+   //skip_play();
+ 			},
+			AIP_REMOVE: function ()  {
+				// Here it's safe to remove the PREROLL_ELEM from the page if you want. But it's not recommend.
+			}
+		});
+	});
+	
+	 
+ 
+				function show_preroll() {
+ 					if (typeof aiptag.adplayer !== 'undefined') {
+				 	aiptag.cmd.player.push(function() { aiptag.adplayer.startPreRoll(); });
+					} else {
+				    	
+   //skip_play();
+ 
+					}
+				}
+	
+</script>
+    <nav class="Navigation hideAfterFullscreen">
+        <div class="Navigation-Container">
+            <a class="Navigation-Image" href="./"><img src="./Assests/Imgs/Logo.png"></img></a>
+            <ul>
+                <li class="Navigation-Button"><a href="./"><i class="las la-home"></i><p>Home</p></a></li>
+                <li class="Navigation-Button"><a href="./e.html"><i class="las la-hourglass-half"></i><p>Emulator</p></a></li>
+                <li class="Navigation-Button"><a href="./settings.html"><i class="las la-cog"></i><p>Settings</p></a></li>
+				<li class="Navigation-Button"><a href="https://papapi.pro" target="_blank"><p>👌NEW CLASS</p></a></li>
+				<li class="Navigation-Button"><a href="https://geography-quiz-10.wiki" target="_blank"><p>👌NEW CLASS 2</p></a></li>
+            <ul>
+        </div>
+    </nav>
+
+    
+    <div class="Projects-Frame hidden">
+        <div class="Projects-FrameBar">
+            <i id="close" class="las la-times-circle"></i>
+            <i id="fullscreen" class="las la-expand"></i>
+            <i id="link" class="las la-link"></i>
+        </div>
+        <iframe class="Projects-IFrame" src=""></iframe>
+    </div>
+
+     <div class="hideAfterFullscreen">
+        <center>
+            <h1 style="margin-top: 25px; color: var(--text-color1)">Geography 76</h1>
+       <br>
+		 <div id='agario-cafe_300x250'>
+			<script type='text/javascript'>
+			aiptag.cmd.display.push(function() { aipDisplayTag.display('agario-cafe__300x250'); });
+			</script>
+         </div>		 </center>
+		 
+        <hr>
+        <center style="padding: 2em 0 0 0">
+
+            <input type="text" class="Settings-TextInput" id="GameSearchBar" placeholder="Search For Project">
+        </center>
+    </div>
+
+    <div class="Projects-Container hideAfterFullscreen">
+
+    </div>
+	
+	<div class="Projects-Container hideAfterFullscreen">
+	<footer class="footer">
+<h3><strong>Unblxcked Gxmes: Unlimited Fun Without Restrictions</strong></h3>
+<p>In today&rsquo;s digital world, finding fun and engaging unblxcked gxmes is essential for players who want to enjoy gaming anywhere, including schools and workplaces. Many institutions restrict access to gaming websites, but unblxcked gxmes provide a way to bypass these limitations and enjoy seamless gameplay.</p>
+<h4><strong>What Are Unblxcked Gxmes?</strong></h4>
+<p>Unblxcked gxmes are online gxmes that can be played without restrictions, regardless of network filters. These gxmes are often hosted on special websites designed to bypass school or office firewalls, allowing users to enjoy their favorite titles without interruption.</p>
+	
+	</footer>
+</div>
+
+    <script src="./Assests/JS/aboutblank.js"></script>
+    <script src="./Assests/JS/options.js?s"></script>
+    <script src="./Assests/JS/g.js?v4gs"></script>
+	<style>
+	
+	.footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding-block: 15px;
+    line-height: 28px;
+    font-size: 15px;
+    margin-left: 30px;
+	margin-right: 30px;
+}
+	
+.footer a {
+  color: white;
+  text-decoration: none;
+  background-color: black;
+  transition: color 0.15s ease;
+}
+
+.footer a:hover {
+  color: rgb(225, 139, 9);
+  text-decoration: underline;
+}
+	</style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-P6SG1R4QM9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-P6SG1R4QM9');
+</script>
+
+<script defer src="/modern-ui/ui.js"></script>
+</body>
+</html>
