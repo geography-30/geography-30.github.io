@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Contact • geography-30</title>
+<title>Privacy Policy • geography-30</title>
 <link id="fav-ico" rel="icon" href="/favicon.ico" sizes="any">
 <link id="fav-apple" rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#090d13" />
@@ -20,12 +20,12 @@
 <body>
   <div class="wrap">
     <div class="topbar">
-      <div class="brand"><a href="/">← Back</a></div>
-      <div><a href="/">Home</a></div>
+      <div class="brand"><a href="index.html">← Back</a></div>
+      <div><a href="index.html">Home</a></div>
     </div>
     <main>
-      <h1>Contact</h1>
-      <p>For inquiries or takedowns, email contact@example.com (replace with yours).</p>
+      <h1>Privacy Policy</h1>
+      <p>We do not collect personal data. Third‑party hosts or ad providers may set cookies.</p>
     </main>
   </div>
 </body>
