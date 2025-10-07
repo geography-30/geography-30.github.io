@@ -4,10 +4,30 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>geography-30 • Unblocked</title>
-<meta name="description" content="Unblocked games: 10-column grid with thumbnails, fullscreen player, and settings. Fed by games.json." />
+<meta name="description" content="Unblocked games: 10-column grid with thumbnails, fullscreen player, and a rich settings panel. Fed by games.json." />
 <style>
-  :root{ --bg:#0b0f14;--card:#121823;--muted:#9fb1c3;--text:#eaf2ff;--accent:#7cc4ff;--border:rgba(124,196,255,.18) }
-  [data-theme="light"]{ --bg:#f6f8fb; --card:#ffffff; --muted:#5a6a7a; --text:#0b1420; --accent:#2563eb; --border:rgba(37,99,235,.18) }
+  /* ===== Modern Blue Theme ===== */
+  :root{
+    --bg:#090d13;
+    --card:#0f1520;
+    --muted:#9fb1c3;
+    --text:#eef6ff;
+    --accent:#2ea8ff;
+    --accent-hover:#58c5ff;
+    --border:rgba(46,168,255,.28);
+    --btn-text:#06121a;
+  }
+  [data-theme="light"]{
+    --bg:#f5f8fc;
+    --card:#ffffff;
+    --muted:#5a6a7a;
+    --text:#0b1420;
+    --accent:#2a7dff;
+    --accent-hover:#5699ff;
+    --border:rgba(42,125,255,.28);
+    --btn-text:#ffffff;
+  }
+
   *{box-sizing:border-box}
   html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
     font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial}
@@ -16,86 +36,137 @@
   .wrap{max-width:1680px;margin:0 auto;padding:14px 10px 48px}
   .topbar{display:flex;align-items:center;gap:10px;justify-content:space-between}
   .brand{font-weight:800;letter-spacing:.3px;font-size:18px;white-space:nowrap}
-  .actions{display:flex;align-items:center;gap:8px;position:relative;flex-wrap:wrap}
-  .btn{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--border);
-    padding:8px 10px;border-radius:10px;background:linear-gradient(180deg, var(--card), color-mix(in oklab, var(--card) 92%, black 8%));cursor:pointer;font-size:13px}
-  .btn:hover{border-color:color-mix(in oklab, var(--border) 40%, var(--accent))}
-  .muted{color:var(--muted);font-size:12px}
-  .hero{color:var(--muted);font-size:13px;margin:6px 0 10px}
+  .actions{display:flex;align-items:center;gap:10px;position:relative;flex-wrap:wrap}
 
-  /* 10 fixed columns + small cards with images */
+  /* Buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:10px 14px;border-radius:12px;cursor:pointer;font-size:13px;
+    background:linear-gradient(180deg, var(--accent), color-mix(in oklab, var(--accent) 85%, #000 15%));
+    color:var(--btn-text); border:1px solid color-mix(in oklab, var(--accent) 70%, #fff 30%);
+    box-shadow:0 0 0 rgba(46,168,255,0);
+    transition:box-shadow .18s ease, transform .12s ease, background .18s ease, border-color .18s ease, filter .18s ease;
+  }
+  .btn:hover{
+    background:linear-gradient(180deg, var(--accent-hover), color-mix(in oklab, var(--accent-hover) 80%, #000 20%));
+    border-color:color-mix(in oklab, var(--accent-hover) 70%, #fff 30%);
+    box-shadow:0 6px 24px rgba(46,168,255,.28), 0 2px 6px rgba(46,168,255,.36);
+    transform:translateY(-1px);
+  }
+  .btn:active{ transform:translateY(0); filter:saturate(1.06) }
+
+  .muted{color:var(--muted);font-size:12px}
+  .hero{color:var(--muted);font-size:13px;margin:6px 0 12px}
+
+  /* Grid: 10 fixed columns + small cards with images */
   .grid{display:grid;gap:8px;grid-template-columns:repeat(10,1fr)}
-  .card{border:1px solid var(--border);border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#141b28,#0e1420);
-    display:flex;flex-direction:column;min-height:138px}
+  .card{
+    border:1px solid var(--border);border-radius:12px;overflow:hidden;
+    background:linear-gradient(180deg, #111827, #0c1220);
+    display:flex;flex-direction:column;min-height:138px;
+    transition:border-color .18s ease, transform .12s ease, box-shadow .18s ease;
+  }
+  .card:hover{
+    border-color:color-mix(in oklab, var(--border) 40%, var(--accent) 60%);
+    transform:translateY(-2px);
+    box-shadow:0 8px 22px rgba(46,168,255,.14);
+  }
   [data-theme="light"] .card{background:linear-gradient(180deg,#ffffff,#f4f7fb)}
 
-  .thumb{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
-    background:radial-gradient(120% 100% at 30% 20%,#20314a 0%,#0e1420 60%)}
+  .thumb{
+    width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;
+    background:radial-gradient(120% 100% at 30% 20%,#1a2740 0%,#0c1220 60%);
+  }
   [data-theme="light"] .thumb{background:radial-gradient(120% 100% at 30% 20%,#cfd9f5 0%,#eef3ff 60%)}
-  .thumb img{width:100%;height:100%;object-fit:cover;}
+  .thumb img{width:100%;height:100%;object-fit:cover}
 
-  .meta{padding:6px 8px}
-  .title{font-size:12px;font-weight:800;line-height:1.15;height:28px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-  .badge{display:inline-block;margin-top:6px;font-size:10px;padding:3px 6px;border-radius:999px;background:rgba(124,196,255,.12);color:var(--accent)}
+  .meta{padding:8px 10px}
+  .title{font-size:12px;font-weight:800;line-height:1.2;height:30px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .badge{display:inline-block;margin-top:6px;font-size:10px;padding:4px 8px;border-radius:999px;background:rgba(46,168,255,.16); color:var(--accent); border:1px solid rgba(46,168,255,.25)}
 
   /* Search & category */
-  .toolbar{display:flex;gap:8px;align-items:center;margin:8px 0 12px;flex-wrap:wrap}
-  .input,.select{border:1px solid var(--border);background:var(--card);color:var(--text);
-    padding:8px 10px;border-radius:10px;font-size:13px}
-  .select{background:linear-gradient(180deg,var(--card),color-mix(in oklab,var(--card) 92%, black 8%))}
+  .toolbar{display:flex;gap:10px;align-items:center;margin:10px 0 14px;flex-wrap:wrap}
+  .input,.select{border:1px solid var(--border); background:var(--card); color:var(--text); padding:9px 12px; border-radius:10px; font-size:13px}
+  .select{ background:linear-gradient(180deg,var(--card),color-mix(in oklab,var(--card) 92%, #000 8%))}
   .counter{margin-left:auto}
 
-  /* Settings panel */
-  .panel{position:absolute;top:42px;right:0;min-width:260px;background:var(--bg);border:1px solid var(--border);
-    border-radius:12px;padding:10px 10px 8px;display:none}
+  /* Settings panel (Hybrid) */
+  .panel{
+    position:absolute;top:48px;right:0;min-width:320px;background:var(--card);
+    border:1px solid var(--border); border-radius:14px;padding:12px;display:none;
+    box-shadow:0 16px 40px rgba(0,0,0,.35), 0 0 0 1px rgba(46,168,255,.12) inset;
+  }
   .panel.open{display:block}
+  .panel h4{margin:6px 0 8px;font-size:13px;color:var(--muted)}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .row{display:flex;align-items:center;justify-content:space-between;padding:6px 2px;gap:12px}
-  .note{color:var(--muted);font-size:12px;padding:4px}
+  .sub{font-size:12px;color:var(--muted);margin-top:4px}
 
   /* Player modal */
-  .modal{position:fixed;inset:0;display:none;background:rgba(0,0,0,.6);backdrop-filter:saturate(120%) blur(6px);z-index:40}
+  .modal{position:fixed;inset:0;display:none;background:rgba(4,10,18,.66);backdrop-filter:saturate(120%) blur(8px);z-index:40}
   .modal.open{display:flex}
-  .sheet{margin:auto;max-width:min(1400px,96vw);width:100%;height:min(86vh,900px);
-    background:var(--bg);border:1px solid var(--border);border-radius:14px;display:flex;flex-direction:column;overflow:hidden}
-  .pbar{display:flex;align-items:center;justify-content:space-between;padding:8px;border-bottom:1px solid var(--border)}
-  .pbar .left{display:flex;align-items:center;gap:8px}
-  .pbtn{border:1px solid var(--border);padding:7px 10px;border-radius:9px;background:linear-gradient(180deg,var(--card),color-mix(in oklab, var(--card) 92%, black 8%));cursor:pointer;font-size:13px}
-  .pbtn:hover{border-color:color-mix(in oklab,var(--border) 40%, var(--accent))}
-  .frame{flex:1;min-height:0}
-  iframe.player{width:100%;height:100%;border:0;background:#000}
+  .sheet{
+    margin:auto;max-width:min(1400px,96vw);width:100%;height:min(86vh,900px);
+    background:var(--card); border:1px solid var(--border); border-radius:16px;
+    display:flex;flex-direction:column;overflow:hidden; box-shadow:0 20px 50px rgba(0,0,0,.5)
+  }
+  .pbar{display:flex;align-items:center;justify-content:space-between;padding:10px;border-bottom:1px solid var(--border)}
+  .pbar .left{display:flex;align-items:center;gap:10px}
+  .pbtn{
+    border:1px solid var(--border); padding:8px 12px; border-radius:10px; cursor:pointer; font-size:13px;
+    background:linear-gradient(180deg, var(--accent), color-mix(in oklab, var(--accent) 85%, #000 15%)); color:var(--btn-text);
+    box-shadow:0 0 0 rgba(46,168,255,0); transition:box-shadow .18s ease, transform .12s ease, background .18s ease, border-color .18s ease;
+  }
+  .pbtn:hover{
+    background:linear-gradient(180deg, var(--accent-hover), color-mix(in oklab, var(--accent-hover) 80%, #000 20%));
+    border-color:color-mix(in oklab, var(--accent-hover) 70%, #fff 30%);
+    box-shadow:0 6px 24px rgba(46,168,255,.28), 0 2px 6px rgba(46,168,255,.36);
+    transform:translateY(-1px);
+  }
 
   /* Quick links */
-  .qlinks{display:none;gap:6px;flex-wrap:wrap}
+  .qlinks{display:none;gap:8px;flex-wrap:wrap}
   .qlinks.show{display:flex}
 </style>
 </head>
 <body>
   <div class="wrap">
     <div class="topbar">
-      <div class="brand">geography-30 • Unblocked <span class="muted">(10 columns • with thumbnails)</span></div>
+      <div class="brand">geography-30 • Unblocked <span class="muted">(Modern Blue • Hybrid Settings)</span></div>
       <div class="actions">
         <div id="quickLinks" class="qlinks">
           <a class="btn" href="https://www.google.com" target="_blank" rel="noopener">Google</a>
           <a class="btn" href="https://drive.google.com" target="_blank" rel="noopener">Google Drive</a>
+          <a class="btn" id="btnClassroom" href="https://classroom.google.com" target="_blank" rel="noopener">Google Classroom</a>
         </div>
         <button class="btn" id="btnSettings" aria-haspopup="true" aria-expanded="false">⚙ Settings</button>
         <div class="panel" id="settingsPanel" role="dialog" aria-label="Settings">
-          <div class="row">
-            <span>Theme</span>
-            <select id="themeSelect" class="select">
-              <option value="dark">Dark</option>
-              <option value="light">Light</option>
-            </select>
+          <h4>Appearance</h4>
+          <div class="grid2">
+            <div class="row"><span>Theme</span>
+              <select id="themeSelect" class="select">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+              </select>
+            </div>
+            <div class="row"><span>Open in new tab</span>
+              <label><input id="newtabSwitch" type="checkbox" /> enabled</label>
+            </div>
           </div>
-          <div class="row">
-            <span>Quick Links</span>
-            <label><input id="linksSwitch" type="checkbox" /> Show Google &amp; Drive</label>
+
+          <h4>Quick Links</h4>
+          <div class="grid2">
+            <div class="row"><span>Show Google</span><label><input id="glink" type="checkbox" /></label></div>
+            <div class="row"><span>Show Drive</span><label><input id="dlink" type="checkbox" /></label></div>
+            <div class="row"><span>Show Classroom</span><label><input id="clink" type="checkbox" /></label></div>
           </div>
-          <div class="row">
-            <span>Open in new tab</span>
-            <label><input id="newtabSwitch" type="checkbox" /> enabled</label>
+
+          <h4>Player</h4>
+          <div class="grid2">
+            <div class="row"><span>Fullscreen before open</span><label><input id="fsBefore" type="checkbox" /></label></div>
+            <div class="row"><span>Autoplay ads</span><label><input id="adsAuto" type="checkbox" /></label></div>
           </div>
-          <div class="note">Choices are saved in your browser (localStorage).</div>
+          <div class="sub">“Autoplay ads” is a stub for future use. No ads will run unless you integrate a provider.</div>
         </div>
       </div>
     </div>
@@ -128,8 +199,8 @@
   </div>
 
 <script>
-/* ===== Settings ===== */
-const LSKEY = 'g30_settings_en';
+/* ===== Settings/State ===== */
+const LSKEY = 'g30_settings_hybrid';
 const grid = document.getElementById('grid');
 const modal = document.getElementById('playerModal');
 const player = document.getElementById('player');
@@ -141,9 +212,16 @@ const btnFullscreen = document.getElementById('btnFullscreen');
 const settingsBtn = document.getElementById('btnSettings');
 const settingsPanel = document.getElementById('settingsPanel');
 const themeSelect = document.getElementById('themeSelect');
-const linksSwitch = document.getElementById('linksSwitch');
 const newtabSwitch = document.getElementById('newtabSwitch');
+
 const quickLinks = document.getElementById('quickLinks');
+const btnClassroom = document.getElementById('btnClassroom');
+const glink = document.getElementById('glink');
+const dlink = document.getElementById('dlink');
+const clink = document.getElementById('clink');
+
+const fsBefore = document.getElementById('fsBefore');
+const adsAuto = document.getElementById('adsAuto');
 
 const q = document.getElementById('q');
 const catSelect = document.getElementById('catSelect');
@@ -154,14 +232,33 @@ function saveSettings(s){ localStorage.setItem(LSKEY, JSON.stringify(s)); }
 function applySettings(s){
   document.documentElement.setAttribute('data-theme', s.theme||'dark');
   themeSelect.value = s.theme||'dark';
-  quickLinks.classList.toggle('show', !!s.links);
-  linksSwitch.checked = !!s.links;
   newtabSwitch.checked = !!s.newtab;
+  glink.checked = s.glink ?? true;
+  dlink.checked = s.dlink ?? true;
+  clink.checked = s.clink ?? false;
+  fsBefore.checked = !!s.fsBefore;
+  adsAuto.checked = !!s.adsAuto;
+
+  // Quick links visibility
+  quickLinks.style.display = (glink.checked || dlink.checked || clink.checked) ? 'flex' : 'none';
+  quickLinks.querySelector('a[href*="google.com"]').style.display = glink.checked ? '' : 'none';
+  quickLinks.querySelector('a[href*="drive.google.com"]').style.display = dlink.checked ? '' : 'none';
+  btnClassroom.style.display = clink.checked ? '' : 'none';
 }
-function currentSettings(){ return { theme:themeSelect.value, links:linksSwitch.checked, newtab:newtabSwitch.checked }}
+function currentSettings(){
+  return {
+    theme: themeSelect.value,
+    newtab: newtabSwitch.checked,
+    glink: glink.checked,
+    dlink: dlink.checked,
+    clink: clink.checked,
+    fsBefore: fsBefore.checked,
+    adsAuto: adsAuto.checked
+  };
+}
 
 /* ===== Data (games.json) ===== */
-const FALLBACK = []; // Full list comes from games.json
+const FALLBACK = [];
 async function loadGames(){
   try{
     const res = await fetch('games.json', {cache:'no-store'});
@@ -215,6 +312,11 @@ function openPlayer(g){
   gameTitle.textContent = g.label || 'Game';
   player.src = g.game_url || 'about:blank';
   modal.classList.add('open');
+
+  const s = loadSettings();
+  if (s.fsBefore) { // request fullscreen right after opening
+    setTimeout(()=>{ goFullscreen(); }, 120);
+  }
 }
 function closePlayer(){
   modal.classList.remove('open');
@@ -249,8 +351,12 @@ settingsBtn.addEventListener('click', ()=>{
 });
 ['change','input'].forEach(ev=>{
   themeSelect.addEventListener(ev, ()=>{ applySettings(currentSettings()); saveSettings(currentSettings()); });
-  linksSwitch.addEventListener(ev, ()=>{ applySettings(currentSettings()); saveSettings(currentSettings()); });
   newtabSwitch.addEventListener(ev, ()=>{ saveSettings(currentSettings()); });
+  glink.addEventListener(ev, ()=>{ applySettings(currentSettings()); saveSettings(currentSettings()); });
+  dlink.addEventListener(ev, ()=>{ applySettings(currentSettings()); saveSettings(currentSettings()); });
+  clink.addEventListener(ev, ()=>{ applySettings(currentSettings()); saveSettings(currentSettings()); });
+  fsBefore.addEventListener(ev, ()=>{ saveSettings(currentSettings()); });
+  adsAuto.addEventListener(ev, ()=>{ saveSettings(currentSettings()); });
   q.addEventListener(ev, applyFilters);
 });
 catSelect.addEventListener('change', applyFilters);
