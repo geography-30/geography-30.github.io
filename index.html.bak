@@ -110,7 +110,8 @@
   footer a{padding:6px 10px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03)}
   footer a:hover{background:rgba(255,255,255,.06)}
 </style>
-</head><body>
+</head>
+<body>
   <div class="wrap">
     <div class="topbar">
       <div class="brandline">
@@ -155,11 +156,7 @@
     <div class="top-ad">
       <div class="ad-970x250">
         <!-- AdinPlay 970x250 container -->
-               <div id='paperio-pro_970x250'>
-			<script type='text/javascript'>
-			aiptag.cmd.display.push(function() { aipDisplayTag.display('paperio-pro_970x250'); });
-			</script>
-         </div>
+        <div id="paperio-pro_970x250" style="width:100%;height:100%;display:flex;align-items:center;justify-content:center">970×250</div>
       </div>
     </div>
 

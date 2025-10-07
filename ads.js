@@ -7,8 +7,8 @@ window.reloadAds = function reloadAds(){
     console.log('[AdinPlay] refresh banners');
     if (window.aiptag && window.aiptag.cmd && window.aiptag.cmd.display) {
       window.aiptag.cmd.display.push(function() {
-        try { aipDisplayTag.display('fine-arts-lol_970x250'); } catch(e){ console.warn('970x250 display error', e); }
-        try { aipDisplayTag.display('fine-arts-lol_300x250'); } catch(e){ console.warn('300x250 display error', e); }
+        try { aipDisplayTag.display('paperio-pro_970x250'); } catch(e){ console.warn('970x250 display error', e); }
+        try { aipDisplayTag.display('paperio-pro_300x250'); } catch(e){ console.warn('300x250 display error', e); }
       });
     }
   } catch (err) {
@@ -50,8 +50,8 @@ window.show_preroll = function show_preroll(){
   try{
     if (window.aiptag && window.aiptag.cmd && window.aiptag.cmd.display){
       window.aiptag.cmd.display.push(function() {
-        try { aipDisplayTag.display('fine-arts-lol_970x250'); } catch(e){}
-        try { aipDisplayTag.display('fine-arts-lol_300x250'); } catch(e){}
+        try { aipDisplayTag.display('paperio-pro_970x250'); } catch(e){}
+        try { aipDisplayTag.display('paperio-pro_300x250'); } catch(e){}
       });
     }
   }catch(e){}
