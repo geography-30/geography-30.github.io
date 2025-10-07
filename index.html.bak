@@ -34,7 +34,7 @@
     color:#06121a; border:1px solid color-mix(in oklab, var(--accent) 70%, #fff 30%);
     box-shadow:0 0 0 rgba(46,168,255,0); transition:box-shadow .18s ease, transform .12s ease, background .18s ease, border-color .18s ease, filter .18s ease}
   .btn:hover{ background:linear-gradient(180deg, var(--accent2), color-mix(in oklab, var(--accent2) 80%, #000 20%)); border-color:color-mix(in oklab, var(--accent2) 70%, #fff 30%); box-shadow:0 6px 24px rgba(46,168,255,.28), 0 2px 6px rgba(46,168,255,.36); transform:translateY(-1px) }
-  .btn.red{
+  .btn.red{font-weight:900;
     background: radial-gradient(120% 180% at 10% -10%, var(--danger3) 0%, var(--danger2) 18%, var(--danger) 48%, #a6132e 100%);
     color:#1b0b14; border:1px solid color-mix(in oklab, var(--danger) 70%, #fff 30%);
     animation: pulseGlow 2.2s ease-in-out infinite;
@@ -106,81 +106,20 @@
   .preplay .row{display:flex; gap:14px; align-items:center; margin-top:6px}
   .preplay .hint{font-size:12px; color:var(--muted)}
 
+  
+  #btnSettings{ font-size:15px; padding:12px 18px; letter-spacing:.2px; }
+  #btnSettings:hover{ filter:saturate(1.08) brightness(1.04); }
+
   footer{margin-top:28px; padding-top:18px; border-top:1px solid rgba(255,255,255,.08); display:flex; gap:16px; flex-wrap:wrap; align-items:center; justify-content:center; color:var(--muted); font-size:13px}
   footer a{padding:6px 10px; border-radius:10px; border:1px solid rgba(255,255,255,.08); background:rgba(255,255,255,.03)}
   footer a:hover{background:rgba(255,255,255,.06)}
 </style>
-</head><body>
-<div id="preroll"></div>
-<script>
-	function getScript(src) {
-    var headElm = document.head || document.getElementsByTagName('head')[0];
-    var script = document.createElement("script");
-    var once = true;
-    script.async = "async";
-    script.type = "text/javascript";
-    script.charset = "UTF-8";
-    script.src = src;
-    script.onload = script.onreadystatechange = function() {
-        if (once && (!script.readyState || /loaded|complete/.test(script.readyState))) {
-            once = false;         
-            script.onload = script.onreadystatechange = null;
-			console.log("okeey");
-        }
-    };
-	  headElm.appendChild(script);
-}
-
- 
-	getScript("https://api.adinplay.com/libs/aiptag/pub/AGT/paperio.pro/tag.min.js");
- 
-	window.aiptag = window.aiptag || {cmd: []};
-	aiptag.cmd.display = aiptag.cmd.display || [];
-	aiptag.cmd.player = aiptag.cmd.player || [];
-
-	//CMP tool settings
-	aiptag.cmp = {
-		show: true,
-		position: "centered",  //centered, bottom
-		button: true,
-		buttonText: "Privacy settings",
-		buttonPosition: "bottom-left" //bottom-left, bottom-right, top-left, top-right
-	}
-
-	aiptag.cmd.player.push(function() {
-		aiptag.adplayer = new aipPlayer({
-			AD_WIDTH: 960,
-			AD_HEIGHT: 540,
-			AD_DISPLAY: 'center', //default, fullscreen, center, fill
-			LOADING_TEXT: 'loading advertisement',
-			PREROLL_ELEM: function(){return document.getElementById('preroll')},
-			AIP_COMPLETE: function (evt){
-				
-   //skip_play();
- 			},
-			AIP_REMOVE: function ()  {
-				// Here it's safe to remove the PREROLL_ELEM from the page if you want. But it's not recommend.
-			}
-		});
-	});
-	
-	 
- 
-				function show_preroll() {
- 					if (typeof aiptag.adplayer !== 'undefined') {
-				 	aiptag.cmd.player.push(function() { aiptag.adplayer.startPreRoll(); });
-					} else {
-				    	
-   //skip_play();
- 
-					}
-				}
-	
-</script>
+</head>
+<body>
   <div class="wrap">
     <div class="topbar">
       <div class="brandline">
-        <div class="brand"><a href="/" title="Home">geography-30 • Unblocked</a></div>
+        <div class="brand"><a href="index.html" title="Home">geography-30 • Unblocked</a></div>
         <nav class="nav">
           <a href="about.html">About</a>
           <a href="privacy.html">Privacy</a>
@@ -221,11 +160,12 @@
     <div class="top-ad">
       <div class="ad-970x250">
         <!-- AdinPlay 970x250 container -->
-               <div id='paperio-pro_970x250'>
-			<script type='text/javascript'>
-			aiptag.cmd.display.push(function() { aipDisplayTag.display('paperio-pro_970x250'); });
-			</script>
-         </div>
+        <div id='paperio-pro_970x250' style="width:100%;height:100%;">
+  <script type='text/javascript'>
+    aiptag = window.aiptag || {cmd:{}}; aiptag.cmd.display = aiptag.cmd.display || [];
+    aiptag.cmd.display.push(function() { aipDisplayTag.display('paperio-pro_970x250'); });
+  </script>
+</div>
       </div>
     </div>
 
@@ -256,15 +196,15 @@
       </div>
       <div class="frame">
         <div class="preplay" id="preplay">
-          <div class="title" id="ppTitle">Game</div>
-          <div class="thumb"><img id="ppThumb" alt=""></div>
+<div class="thumb"><img id="ppThumb" alt=""></div>
           <div class="ad-300" id="ppAd">
-            <!-- AdinPlay 300x250 container -->
-            <div id='paperio-pro_300x250'>
-			<script type='text/javascript'>
-			aiptag.cmd.display.push(function() { aipDisplayTag.display('paperio-pro_300x250'); });
-			</script>
-         </div>
+            <!-- AdinPlay 300x250 container (uses same slot ID per your request) -->
+            <div id='paperio-pro_970x250' style="width:100%;height:100%;">
+  <script type='text/javascript'>
+    aiptag = window.aiptag || {cmd:{}}; aiptag.cmd.display = aiptag.cmd.display || [];
+    aiptag.cmd.display.push(function() { aipDisplayTag.display('paperio-pro_970x250'); });
+  </script>
+</div>
           </div>
           <div class="row"><button class="play-btn" id="ppPlay">▶ PLAY</button></div>
           <div class="hint">Press <b>ESC</b> to close</div>
@@ -276,14 +216,14 @@
 
 <script src="ads.js"></script>
 <script>
-const LSKEY = 'g30_favicon_switcher_v4_8';
+const LSKEY = 'g30_favicon_switcher_v5_0';
 const FAV = {
   default: { ico: '/favicon.ico', apple: '/apple-touch-icon.png' },
-  classroom: { ico: 'https://www.gstatic.com/classroom/ic_product_classroom_32.png', apple: 'https://www.gstatic.com/classroom/ic_product_classroom_32.png' },
+  classroom: { ico: 'https://classroom.google.com/favicon.ico', apple: 'https://ssl.gstatic.com/classroom/apple-touch-icon.png' },
   google: { ico: 'https://www.google.com/favicon.ico', apple: 'https://www.google.com/favicon.ico' },
   drive: { ico: 'https://drive.google.com/favicon.ico', apple: 'https://ssl.gstatic.com/docs/doclist/images/drive_2022q3_32dp.png' },
   canvas: { ico: 'https://canvas.instructure.com/favicon.ico', apple: 'https://canvas.instructure.com/favicon.ico' },
-  powerschool: { ico: 'https://www.powerschool.com/wp-content/uploads/2024/03/powerschool-timeline-icons_powerschool.png', apple: 'https://www.powerschool.com/wp-content/uploads/2024/03/powerschool-timeline-icons_powerschool.png' }
+  powerschool: { ico: 'https://www.powerschool.com/wp-content/themes/powerschool/favicon.ico', apple: 'https://www.powerschool.com/wp-content/themes/powerschool/favicon.ico' }
 };
 
 const grid = document.getElementById('grid');
@@ -297,11 +237,13 @@ const iconGrid = document.getElementById('iconGrid');
 const favIco = document.getElementById('fav-ico');
 const favApple = document.getElementById('fav-apple');
 
-const modal = document.getElementById('playerModal');
-const player = document.getElementById('player');
+/* SAFE DOM refs for player */
+const modal   = document.getElementById('playerModal');
+const player  = document.getElementById('player');
 const preplay = document.getElementById('preplay');
-const ppTitle = document.getElementById('ppTitle');
-const ppThumb = document.getElementById('ppThumb');
+const gameTitleEl = document.getElementById('gameTitle');
+const ppTitleEl   = document.getElementById('ppTitle');
+const ppThumbEl   = document.getElementById('ppThumb');
 const ppPlay = document.getElementById('ppPlay');
 
 function loadS(){ try{ return JSON.parse(localStorage.getItem(LSKEY))||{} }catch{ return {} } }
@@ -356,17 +298,19 @@ function applyFilters(){ const term=q.value.trim().toLowerCase(), cat=catSelect.
   renderGrid(SHOWN);
 }
 
+/* Null-safe open/start */
 function openModalWithPreplay(g){
-  document.getElementById('gameTitle').textContent = g.label || 'Game';
-  ppTitle.textContent = g.label || 'Game';
-  ppThumb.src = g.game_image_icon || '';
-  preplay.style.display = 'flex';
-  player.src = 'about:blank';
-  modal.classList.add('open');
+  const name = (g && g.label) ? g.label : 'Game';
+  if (gameTitleEl) gameTitleEl.textContent = name;
+  // removed duplicate title line
+  if (ppThumbEl)   ppThumbEl.src = (g && g.game_image_icon) ? g.game_image_icon : '';
+  if (preplay)     preplay.style.display = 'flex';
+  if (player)      player.src = 'about:blank';
+  if (modal)       modal.classList.add('open');
 }
 function startGame(g){
-  preplay.style.display = 'none';
-  player.src = g.game_url || 'about:blank';
+  if (preplay) preplay.style.display = 'none';
+  if (player)  player.src = (g && g.game_url) ? g.game_url : 'about:blank';
 }
 
 /* Pre-roll hook */
@@ -380,32 +324,35 @@ async function runPrerollThenStart(g){
   startGame(g);
 }
 
+/* Safe card click */
 document.addEventListener('click', (e)=>{
   const a = e.target.closest('a.card'); if(!a) return;
   e.preventDefault();
-  const g = SHOWN[+a.dataset.idx];
+  const idx = Number(a.dataset.idx);
+  const g = Array.isArray(SHOWN) && SHOWN[idx] ? SHOWN[idx] : null;
+  if (!g) return;
   openModalWithPreplay(g);
-  ppPlay.onclick = ()=> runPrerollThenStart(g);
+  if (ppPlay) ppPlay.onclick = ()=> runPrerollThenStart(g);
 });
 
 /* Buttons on the RIGHT */
 document.getElementById('btnFullscreen').addEventListener('click', async ()=>{
-  const container = player.parentElement;
+  const container = player?.parentElement;
   if (document.fullscreenElement) await document.exitFullscreen().catch(()=>{});
-  else await container.requestFullscreen?.().catch(()=>{});
+  else await container?.requestFullscreen?.().catch(()=>{});
 });
 function closePlayer(){
-  modal.classList.remove('open');
-  player.src='about:blank';
-  preplay.style.display='none';
+  if (modal)  modal.classList.remove('open');
+  if (player) player.src='about:blank';
+  if (preplay) preplay.style.display='none';
   try{ if (typeof window.reloadAds === 'function') window.reloadAds(); }catch(e){ console.warn('reloadAds error', e); }
 }
 document.getElementById('btnBack').addEventListener('click', closePlayer);
-document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && modal.classList.contains('open')) closePlayer(); });
+document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape' && modal && modal.classList.contains('open')) closePlayer(); });
 modal.addEventListener('click', (e)=>{ if(e.target === modal) closePlayer(); });
 
 setInterval(()=>{
-  if (modal.classList.contains('open') && (!player.src || player.src==='about:blank') && preplay.style.display==='none'){
+  if (modal && modal.classList.contains('open') && (!player?.src || player.src==='about:blank') && preplay && preplay.style.display==='none'){
     preplay.style.display='flex';
   }
 }, 800);
@@ -422,14 +369,62 @@ setInterval(()=>{
   catSelect.addEventListener('change', applyFilters);
 })();
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DL28VT81HX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-DL28VT81HX');
+<!-- AdinPlay player & preroll integration -->
+<div id="preroll"></div>
+<script>
+  function getScript(src) {
+    var headElm = document.head || document.getElementsByTagName('head')[0];
+    var script = document.createElement("script");
+    var once = true;
+    script.async = "async";
+    script.type = "text/javascript";
+    script.charset = "UTF-8";
+    script.src = src;
+    script.onload = script.onreadystatechange = function() {
+      if (once && (!script.readyState || /loaded|complete/.test(script.readyState))) {
+        once = false;
+        script.onload = script.onreadystatechange = null;
+        console.log("AdinPlay script loaded ✅");
+      }
+    };
+    headElm.appendChild(script);
+  }
+
+  getScript("https://api.adinplay.com/libs/aiptag/pub/AGT/paperio.pro/tag.min.js");
+
+  window.aiptag = window.aiptag || {cmd: []};
+  aiptag.cmd.display = aiptag.cmd.display || [];
+  aiptag.cmd.player = aiptag.cmd.player || [];
+
+  aiptag.cmp = {
+    show: true,
+    position: "centered",
+    button: true,
+    buttonText: "Privacy settings",
+    buttonPosition: "bottom-left"
+  };
+
+  aiptag.cmd.player.push(function() {
+    aiptag.adplayer = new aipPlayer({
+      AD_WIDTH: 960,
+      AD_HEIGHT: 540,
+      AD_DISPLAY: 'center',
+      LOADING_TEXT: 'loading advertisement',
+      PREROLL_ELEM: function(){return document.getElementById('preroll')},
+      AIP_COMPLETE: function (evt){ /* preroll finished */ },
+      AIP_REMOVE: function ()  { /* preroll element can be removed if needed */ }
+    });
+  });
+
+  function show_preroll() {
+    if (typeof aiptag.adplayer !== 'undefined') {
+      aiptag.cmd.player.push(function() { aiptag.adplayer.startPreRoll(); });
+    } else {
+      console.log("adplayer not ready");
+    }
+  }
 </script>
+
 </body>
 </html>
