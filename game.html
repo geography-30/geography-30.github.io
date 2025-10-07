@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"/>
+<title>Game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<style>body{margin:0;background:#000;color:#fff}#top{background:#111;padding:10px;color:#fff}iframe{width:100%;height:90vh;border:0}</style>
+</head><body>
+<div id="top"><button onclick="history.back()">← Back</button> <span id="title"></span></div>
+<iframe id="frame"></iframe>
+<script>
+const id=new URLSearchParams(location.search).get('id');
+if(id){
+  document.getElementById('title').textContent=id;
+  document.getElementById('frame').src='g/'+id+'/';
+}
+</script>
+</body></html>

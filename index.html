@@ -1,52 +1,278 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>geography-30 • Unblocked (Static)</title>
-  <meta name="description" content="Static, JS-free unblocked games directory hosted on geography-30.github.io.">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>MacVG – Free Unblocked Games (USA)</title>
+  <meta name="description" content="Play the best free unblocked games online in the USA. Action, puzzle, racing, and .io games for school or work."/>
+  <meta name="keywords" content="unblocked games, free games, play online, io games, school games, USA unblocked, browser games"/>
+  <meta name="author" content="MacVG"/>
+  <meta property="og:title" content="MacVG – Free Unblocked Games (USA)"/>
+  <meta property="og:description" content="Play the best free unblocked games online in the USA. Action, puzzle, racing, and .io games for school or work."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://lesson-30.pro/"/>
+  <meta property="og:image" content="https://lesson-30.pro/assets/cover.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="MacVG – Free Unblocked Games (USA)"/>
+  <meta name="twitter:description" content="Play the best free unblocked games online in the USA. Action, puzzle, racing, and .io games for school or work."/>
+  <link id="site-favicon" rel="icon" href="assets/favicon.png"/>
+  <link rel="stylesheet" href="styles.css?vs1d"/>
+  <link rel="stylesheet" href="assets/css/app-games.css">
 </head>
 <body>
-  <header class="header">
-    <div class="brand">geography-30 • Unblocked<small>Static HTML • No JS • GitHub Pages Ready</small></div>
-  </header>
+<script>
+	window.aiptag = window.aiptag || {cmd: []};
+	aiptag.cmd.display = aiptag.cmd.display || [];
+	aiptag.cmd.player = aiptag.cmd.player || [];
 
-  <div class="hero">
-    Pure <b>HTML + CSS</b> only. Each game opens on its own page. Edit the <code>&lt;iframe src&gt;</code> with your own game files or external URLs.
+	//CMP tool settings
+	aiptag.cmp = {
+		show: true,
+		position: "centered",  //centered, bottom
+		button: true,
+		buttonText: "Privacy settings",
+		buttonPosition: "bottom-left" //bottom-left, bottom-right, bottom-center, top-left, top-right
+	}
+	aiptag.cmd.player.push(function() {
+		aiptag.adplayer = new aipPlayer({
+			AD_WIDTH: 960,
+			AD_HEIGHT: 540,
+			AD_DISPLAY: 'center', //default, fullscreen, fill, center, modal-center
+			LOADING_TEXT: 'loading advertisement',
+			PREROLL_ELEM: function(){return document.getElementById('videoad')},
+			AIP_COMPLETE: function (state)  {
+				 lesson_detail();
+			}
+		});
+
+			});
+
+		function show_videoad() {
+		//check if the adslib is loaded correctly or blocked by adblockers etc.
+		if (typeof aiptag.adplayer !== 'undefined') {
+			aiptag.cmd.player.push(function() { aiptag.adplayer.startVideoAd(); });
+		} else {
+ 			 
+ 		}
+	}
+		</script>
+	<script async src="//api.adinplay.com/libs/aiptag/pub/MNS/agario.cafe/tag.min.js"></script>
+     <div id="videoad"></div>
+  <header>
+  <div class="container">
+    <div class="row">
+      <a class="brand" href="index.html">MacVG</a>
+      <nav class="navlinks">
+        <a class="btn navbtn" href="index.html">Home</a>
+        <a class="btn navbtn" href="about.html">About</a>
+        <a class="btn navbtn" href="contact.html">Contact</a>
+        <a class="btn navbtn" href="privacy.html">Privacy Policy</a>
+        <a class="btn navbtn" href="dmca.html">DMCA</a>
+      
+        <a class="btn navbtn" id="settingsBtn" href="javascript:void(0)">⚙️ Settings</a>
+      </nav>
+      <div class="spacer"></div>
+</div>
+  </div>
+</header>
+  <div class="container">
+  <center>
+	<div id='agario-cafe_970x250'>
+		<script type='text/javascript'>
+			aiptag.cmd.display.push(function() { aipDisplayTag.display('agario-cafe_970x250'); });
+		</script>
+	</div></center>
+    <div class="searchbar"><span>🔎</span><input id="q" type="search" placeholder="Search games..." autocomplete="off"/></div>
+    <div id="cats" class="toolbar"></div>
   </div>
 
-  <main class="container">
-    <div class="grid">
-      <a class="card" href="game-yohoho.html">
-        <div class="thumb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3 7h7l-5.5 4 2.5 7-7-4.5L5 20l2.5-7L2 9h7l3-7z"/></svg></div>
-        <div class="meta"><div class="title" title="Yohoho.io">Yohoho.io</div><span class="badge">IO • Pirate</span></div>
-      </a>
-      <a class="card" href="game-1v1lol.html">
-        <div class="thumb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 5h18v2H3V5zm0 6h18v2H3v-2zm0 6h18v2H3v-2z"/></svg></div>
-        <div class="meta"><div class="title" title="1v1.lol">1v1.lol</div><span class="badge">Shooter</span></div>
-      </a>
-      <a class="card" href="game-slope.html">
-        <div class="thumb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 16l8-8 8 8H4z"/></svg></div>
-        <div class="meta"><div class="title" title="Slope">Slope</div><span class="badge">Skill</span></div>
-      </a>
-      <a class="card" href="game-funny-shooter-2.html">
-        <div class="thumb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 5v4h4v2h-4v4h-2v-4H7v-2h4V7h2z"/></svg></div>
-        <div class="meta"><div class="title" title="Funny Shooter 2">Funny Shooter 2</div><span class="badge">Action</span></div>
-      </a>
-      <a class="card" href="game-paper-io.html">
-        <div class="thumb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h10l6 6v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm10 1.5V10h4.5"/></svg></div>
-        <div class="meta"><div class="title" title="Paper.io">Paper.io</div><span class="badge">IO</span></div>
-      </a>
-      <a class="card" href="game-basketball-stars.html">
-        <div class="thumb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zM4 12h16M12 4c4.4 0 8 3.6 8 8"/></svg></div>
-        <div class="meta"><div class="title" title="Basketball Stars">Basketball Stars</div><span class="badge">Sports</span></div>
-      </a>
-    </div>
+  <main class="container mainwrap">
+    <div id="grid" class="grid" aria-live="polite"></div>
+    <div id="empty" class="empty">Place <strong>games.json</strong> next to this file.</div>
   </main>
 
-  <div class="footer">
-    <span>© 2025 geography-30.</span><span>•</span><span>No JavaScript. Pure HTML + CSS.</span>
+  <footer>
+  <div class="container fwrap">
+    <div>© <span id="y"></span> MacVG • Free Unblocked Games</div>
+    <div class="fnav">
+      <a class="btn navbtn" href="about.html">About</a>
+      <a class="btn navbtn" href="contact.html">Contact</a>
+      <a class="btn navbtn" href="privacy.html">Privacy Policy</a>
+      <a class="btn navbtn" href="dmca.html">DMCA</a>
+    </div>
   </div>
+</footer>
+
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="wrap">
+      <div class="topbar">
+        <button id="close" class="btn">← Back</button>
+        <button id="reload" class="btn">Reload</button>
+        <div style="margin-left:auto"></div>
+        <button id="full" class="btn">Fullscreen</button>
+      </div>
+      <iframe id="frame" title="Game"></iframe>
+    </div>
+  </div>
+
+  <aside id="settings" class="settings" aria-hidden="true">
+    <header class="topbar">
+      <div style="font-weight:600">Settings</div>
+      <div style="margin-left:auto"></div>
+      <button id="settingsClose" class="btn" type="button" onclick="document.querySelector('.settings').classList.remove('open')">Close</button>
+    </header>
+    <div class="panel">
+      <div class="field">
+        <label><input type="checkbox" id="cloakEnabled"/> Enable Tab Cloak</label>
+        <div class="help">Replaces the tab title and favicon.</div>
+      </div>
+      <div class="row2">
+        <div class="field">
+          <label>Title</label>
+          <input id="cloakTitle" placeholder="e.g., Google Classroom"/>
+        </div>
+        <div class="field">
+          <label>Favicon URL</label>
+          <input id="cloakIcon" placeholder="https://google.com/favicon.ico"/>
+        </div>
+      </div>
+      <div class="field">
+        <button id="cloakPresetClassroom" class="btn" type="button">Quick: Classroom</button>
+        <button id="cloakPresetDocs" class="btn" type="button">Quick: Docs</button>
+      </div>
+      <div class="hr"></div>
+      <div class="field">
+        <label><input type="checkbox" id="aboutBlankDefault"/> Open games in about:blank</label>
+        <div class="help">If enabled, clicking the image opens a new about:blank tab.</div>
+      </div>
+      <div class="hr"></div>
+      <div class="field">
+        <label>Panic Redirect (optional)</label>
+        <input id="panicUrl" placeholder="https://www.google.com"/>
+        <div class="help">Press <b>Escape</b> to redirect here when set.</div>
+      </div>
+    </div>
+  </aside>
+
+  <script src="app.js"></script>
+
+<script>
+// === geography-20 style preroll: AdInPlay + same-origin game link guard ===
+(function(){
+  function once(fn){ var called=false; return function(){ if(!called){ called=true; try{ fn&&fn(); }catch(e){} } }; }
+  function waitFor(cond, timeoutMs, ok, ko){
+    var t0=Date.now();
+    (function tick(){
+      try{ if(cond()) return ok(); }catch(e){}
+      if (Date.now()-t0>=timeoutMs) return (ko&&ko());
+      setTimeout(tick,50);
+    })();
+  }
+
+  // AdInPlay-friendly show_videoad(cb)
+  if (typeof window.show_videoad !== 'function'){
+    window.show_videoad = function(cb){
+      var done = once(cb||function(){});
+      waitFor(function(){ return (window.aiptag || window.aipPlayer || window.adplayer || window.aipDisplayTag); }, 3000, function(){
+        try{
+          var p = window.adplayer || (window.aiptag && (window.aiptag.adplayer || window.aiptag.player));
+          if (p && typeof p.playAd === 'function'){
+            try{ if(typeof p.on==='function'){ p.on('AdEnded', done); p.on('AdError', done); } }catch(e){}
+            try{ p.onAdEnded = done; p.onAdError = done; }catch(e){}
+            try{ p.playAd({ onAdEnded: done, onAdError: done }); return; }catch(e){}
+          }
+          if (typeof window.aipPlayer === 'function' && window.aiptag && window.aiptag.cmd && window.aiptag.cmd.player){
+            window.aiptag.cmd.player.push(function(){
+              try{
+                var holder = document.getElementById('aip-preroll') || (function(){
+                  var d=document.createElement('div'); d.id='aip-preroll';
+                  d.style.position='fixed'; d.style.inset='0'; d.style.zIndex='2147483647'; d.style.background='rgba(0,0,0,.75)';
+                  document.body.appendChild(d); return d;
+                })();
+                var temp = new window.aipPlayer({
+                  AD_WIDTH: Math.min(960, Math.floor(window.innerWidth*0.9)),
+                  AD_HEIGHT: Math.min(540, Math.floor(window.innerHeight*0.9)),
+                  AD_FULLSCREEN: true,
+                  AD_VOLUME: 0.5,
+                  AD_CONTAINER: holder,
+                  SHOW: { CLOSE:false },
+                  onAdEnded: function(){ try{ holder.remove(); }catch(e){} done(); },
+                  onAdError: function(){ try{ holder.remove(); }catch(e){} done(); }
+                });
+                try{ temp.playAd(); }catch(e){ done(); }
+              }catch(e){ done(); }
+            });
+            return;
+          }
+          // banner-only -> don't block
+          if (window.aipDisplayTag && typeof window.aipDisplayTag.display==='function'){
+            try{ window.aipDisplayTag.display('aip-fallback'); }catch(e){}
+          }
+          done();
+        }catch(e){ done(); }
+      }, function(){ done(); });
+    };
+  }
+
+  // geography-20 style link targeting:
+  // - Scope to <main>, #games, .games, .cards, .grid if present to avoid header/footer links
+  var SCOPES = ['main','#games','.games','.cards','.grid','.games-grid','.game-grid','.game-list'];
+  function pickScope(){
+    for (var i=0;i<SCOPES.length;i++){
+      var n = document.querySelector(SCOPES[i]);
+      if (n) return n;
+    }
+    return document; // fallback
+  }
+  function isSameOrigin(href){
+    try{ var u = new URL(href, location.href); return u.origin === location.origin; }catch(e){ return true; }
+  }
+  function isGameHref(href){
+    href = (href||'').toLowerCase();
+    if (!href) return false;
+    if (href.startsWith('#') || href.startsWith('javascript:')) return false;
+    // common patterns on game hubs (geography-20-like)
+    return /(play|game|games\.html|\/game\/|\/play\/|id=)/.test(href);
+  }
+  function closestLink(el){
+    while (el && el!==document){
+      if (el.matches && el.matches('a[href]')) return el;
+      el = el.parentNode;
+    }
+    return null;
+  }
+  function onClick(e){
+    var isPrimary = (e.button===0);
+    var modified = e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || !isPrimary;
+    if (!isPrimary) return;
+    var scope = pickScope();
+    if (!scope.contains(e.target)) return; // ignore clicks outside main grid
+    var a = closestLink(e.target);
+    if (!a) return;
+    var href = a.getAttribute('href');
+    if (!href) return;
+    if (!isSameOrigin(href)) return; // don't intercept external links
+    if (!isGameHref(href)) return;   // intercept only game links
+    var target = a.getAttribute('target') || (modified ? '_blank' : null);
+    e.preventDefault();
+    e.stopPropagation();
+    try{
+      window.show_videoad(function(){
+        if (target === '_blank' || modified) window.open(href, '_blank');
+        else window.location.href = href;
+      });
+    }catch(err){
+      if (target === '_blank' || modified) window.open(href, '_blank');
+      else window.location.href = href;
+    }
+  }
+  if (!window.__GEO20_PREROLL_BOUND__){
+    window.__GEO20_PREROLL_BOUND__ = true;
+    document.addEventListener('click', onClick, {capture:true, passive:false});
+  }
+})();
+// === /geography-20 preroll ===
+</script>
+
 </body>
 </html>
